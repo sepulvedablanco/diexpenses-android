@@ -100,7 +100,9 @@ public class MovementsFragment extends Fragment implements NoticeDialogFragment.
 
         if(getView() != null) {
 
-            EventBus.getDefault().register(this);
+            if(!EventBus.getDefault().isRegistered(this)) {
+                EventBus.getDefault().register(this);
+            }
 
             ButterKnife.bind(this, getView());
 

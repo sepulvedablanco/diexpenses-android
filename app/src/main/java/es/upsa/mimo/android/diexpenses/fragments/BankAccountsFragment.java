@@ -85,7 +85,9 @@ public class BankAccountsFragment extends Fragment implements
 
         if(getView() != null){
 
-            EventBus.getDefault().register(this);
+            if(!EventBus.getDefault().isRegistered(this)) {
+                EventBus.getDefault().register(this);
+            }
 
             ButterKnife.bind(this, getView());
 
