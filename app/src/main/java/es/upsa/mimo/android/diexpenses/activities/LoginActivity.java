@@ -78,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (user != null) {
                     toHomeScreen(user);
                 } else {
+                    btnLogin.setEnabled(true);
                     tilPassword.setError(getString(R.string.error_incorrect_password));
                     tilPassword.requestFocus();
                 }
@@ -114,12 +115,12 @@ public class LoginActivity extends AppCompatActivity {
     private boolean checkLogin(String user, String password) {
         boolean valid = true;
         if(user == null || user.isEmpty()) {
-            tilUser.setError(getString(R.string.required_field));
+            tilUser.setError(getString(R.string.common_field_required));
             tilUser.setErrorEnabled(true);
             valid = false;
         }
         if(password == null || password.isEmpty()) {
-            tilPassword.setError(getString(R.string.required_field));
+            tilPassword.setError(getString(R.string.common_field_required));
             tilPassword.setErrorEnabled(true);
             valid = false;
         }

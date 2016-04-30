@@ -98,22 +98,22 @@ public class SignupActivity extends AppCompatActivity {
         Log.d(TAG, "onLogin - start");
         boolean valid = true;
         if(name == null || name.isEmpty()) {
-            tilName.setError(getString(R.string.required_field));
+            tilName.setError(getString(R.string.common_field_required));
             tilName.setErrorEnabled(true);
             valid = false;
         }
         if(user == null || user.isEmpty()) {
-            tilUser.setError(getString(R.string.required_field));
+            tilUser.setError(getString(R.string.common_field_required));
             tilUser.setErrorEnabled(true);
             valid = false;
         }
         if(password == null || password.isEmpty()) {
-            tilPassword.setError(getString(R.string.required_field));
+            tilPassword.setError(getString(R.string.common_field_required));
             tilPassword.setErrorEnabled(true);
             valid = false;
         }
         if(confirmPassword == null || confirmPassword.isEmpty()) {
-            tilConfirmPassword.setError(getString(R.string.required_field));
+            tilConfirmPassword.setError(getString(R.string.common_field_required));
             tilConfirmPassword.setErrorEnabled(true);
             valid = false;
         }

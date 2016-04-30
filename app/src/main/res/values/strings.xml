@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">diexpenses</string>
 
@@ -11,25 +12,22 @@
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
     <string name="go">Go</string>
     <string name="register_question"><u>Don\'t have an Account? Signup Now</u></string>
 
     <string name="common_create">Create</string>
     <string name="common_update">Update</string>
-    <string name="common_field_required">Field required</string>
     <string name="common_cancel">Cancel</string>
-    <string name="common_unknown_error">An unknown error has occurred</string>
     <string name="common_edit">Edit</string>
     <string name="common_accept">Accept</string>
+    <string name="common_field_required">Field required</string>
+    <string name="common_unknown_error">An unknown error has occurred</string>
 
     <string name="sign_up">Sign Up</string>
     <string name="name">Name</string>
     <string name="have_account_question"><u>Have an Account? Login Now</u></string>
     <string name="confirm_password">Confirm password</string>
-    <string name="required_field">Required field</string>
     <string name="different_passwords">Passwords do not match.</string>
-
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -37,7 +35,7 @@
     <string name="drawer_nav_movements">Movements</string>
     <string name="drawer_nav_types">Types</string>
     <string name="drawer_nav_bank_accounts">Bank Accounts</string>
-    <string name="drawer_nav_statistics">Estatistics</string>
+    <string name="drawer_nav_statistics">Statistics</string>
     <string name="drawer_nav_contact">Contact</string>
     <string name="drawer_nav_about_diexpenses">About diexpenses</string>
     <string name="drawer_communicate">Communicate</string>

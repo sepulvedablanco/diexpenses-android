@@ -270,7 +270,7 @@ public class MovementDetailsFragment extends Fragment implements DatePickerDialo
 
     private boolean checkRequiredField(EditText etField, boolean isValidForm) {
         if(etField.getText().toString().isEmpty()) {
-            etField.setText(R.string.required_field);
+            etField.setText(R.string.common_field_required);
             return false;
         }
         return isValidForm;

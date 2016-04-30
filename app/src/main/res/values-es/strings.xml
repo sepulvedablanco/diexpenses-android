@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">diexpenses</string>
+
+    <!-- Common App Strings -->
+    <string name="diexpenses">diexpenses</string>
+
+    <!-- Strings related to login -->
+    <string name="user">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="sign_in">Entrar</string>
+    <string name="error_invalid_email">La dirección de email no es válida</string>
+    <string name="error_invalid_password">La contraseña es muy corta</string>
+    <string name="error_incorrect_password">La contraseña es incorrecta</string>
+    <string name="go">Ir</string>
+    <string name="register_question"><u>¿No tienes una cuenta? Crea una ahora</u></string>
+
+    <string name="common_create">Crear</string>
+    <string name="common_update">Actualizar</string>
+    <string name="common_cancel">Cancelar</string>
+    <string name="common_edit">Editar</string>
+    <string name="common_accept">Aceptar</string>
+    <string name="common_field_required">Campo obligatorio</string>
+    <string name="common_unknown_error">Ha ocurrido un error desconocido</string>
+
+    <string name="sign_up">Sign Up</string>
+    <string name="name">Nombre</string>
+    <string name="have_account_question"><u>¿Tienes una cuenta? ¡Loguéate!</u></string>
+    <string name="confirm_password">Confirmar contraseña</string>
+    <string name="different_passwords">Las contraseñas no coinciden.</string>
+
+
+    <string name="navigation_drawer_open">Abrir menu lateral</string>
+    <string name="navigation_drawer_close">Cerrar menu lateral</string>
+    <string name="drawer_nav_home">Inicio</string>
+    <string name="drawer_nav_movements">Movimientos</string>
+    <string name="drawer_nav_types">Tipos</string>
+    <string name="drawer_nav_bank_accounts">Cuentas bancarias</string>
+    <string name="drawer_nav_statistics">Estadísticas</string>
+    <string name="drawer_nav_contact">Contacto</string>
+    <string name="drawer_nav_about_diexpenses">Sobre diexpenses</string>
+    <string name="drawer_communicate">Comunicación</string>
+    <string name="menu_option_settings">Preferencias</string>
+    <string name="menu_option_logout">Salir</string>
+    <string name="send_mail">Enviar correo…</string>
+    <string name="home_greeting">¡Hola %s!</string>
+    <string name="home_month_incomes">Ingresos del mes: </string>
+    <string name="home_total_amount">Ahorrado en total: </string>
+    <string name="home_month_expenses">Gastos del mes: </string>
+    <string name="home_expenses">Gastos</string>
+    <string name="home_incomes">Ingresos</string>
+    <string name="home_balance_low">¡No gastes tanto!</string>
+    <string name="home_balance_medium">No ahorras nada…</string>
+    <string name="home_balance_high">Este mes vas bien</string>
+    <string name="kinds_new">Crear un tipo de gasto</string>
+    <string name="kinds_new_title">Nuevo tipo de gasto</string>
+    <string name="kinds_new_message">Introduce el nombre del tipo de gasto</string>
+    <string name="kinds_edit_title">Editar tipo de gasto</string>
+    <string name="kinds_edit_message">Introduce el nuevo nombre del tipo de gasto</string>
+    <string name="kinds_remove_title">Eliminar tipo de gasto</string>
+    <string name="kinds_remove_message">¿Está seguro que desea eliminar el tipo de gasto "%1$s"?</string>
+    <string name="kinds_menu_title">Tipo de gasto "%1$s"</string>
+    <string name="subkinds_new">Crear subtipo de gasto</string>
+    <string name="subkinds_menu_title">Subtipo de gasto "%1$s"</string>
+    <string name="subkinds_new_title">Nuevo subtipo de gasto</string>
+    <string name="subkinds_new_message">Introduce el nombre del subtipo de gasto</string>
+    <string name="subkinds_edit_title">Editar subtipo de gasto</string>
+    <string name="subkinds_edit_message">Introduce el nuevo nombre del subtipo de gasto</string>
+    <string name="subkinds_remove_title">Eliminar subtipo de gasto</string>
+    <string name="subkinds_remove_message">¿Está seguro que desea eliminar el subtipo de gasto "%1$s"?</string>
+    <string name="bank_account_unknow_error_creating">Ha ocurrido un error desconocido creando la cuenta bancaria.</string>
+    <string name="bank_account_error">Ha ocurrido un error creando la cuenta bancaria.</string>
+    <string name="bank_account_unknow_error_updating">Ha ocurrido un error desconocido actualizando la cuenta bancaria.</string>
+    <string name="bank_account_error_updating">Ha ocurrido un error actualizando la cuenta bancaria.</string>
+    <string name="bank_accounts_new">Crear cuenta bancaria</string>
+    <string name="bank_accounts_menu_title">Cuenta bancaria "%1$s"</string>
+    <string name="bank_accounts_remove_title">Eliminar cuenta bancaria</string>
+    <string name="bank_accounts_remove_message">¿Está seguro que desea eliminar la cuenta bancaria "%1$s"?</string>
+    <string name="bank_accounts_unknow_error_deleting">Ha ocurrido un error desconocido borrando la cuenta bancaria.</string>
+    <string name="bank_accounts_error_deleting">Ha ocurrido un error borrando la cuenta bancaria.</string>
+    <string name="movement_unknow_error_creating">Ha ocurrido un error desconocido creando el movimiento.</string>
+    <string name="movement_error_creating">Ha ocurrido un error creando el movimiento.</string>
+    <string name="movements_new">Crear movimiento</string>
+    <string name="movements_menu_title">Movimiento "%1$s"</string>
+    <string name="movements_remove_title">Eliminar movimiento</string>
+    <string name="movements_remove_message">¿Está seguro que desea eliminar el movimiento "%1$s"?</string>
+    <string name="preferences_select_picture">Selecciona una imagen</string>
+    <string name="email_subject">diexpenses en contacto</string>
+    <string name="email_to">d.sepulvedabl@gmail.com</string>
+    <string name="rate_button">Valorar</string>
+    <string name="rate_title">Valorar diexpenses</string>
+    <string name="rate_message">Gracias por utilizar esta app. Por favor, valórala.</string>
+    <string name="protocol_market">market://details?id=</string>
+    <string name="protocol_market_url">http://play.google.com/store/apps/details?id=</string>
+    <string name="preferences_currency_title">Moneda</string>
+    <string name="preferences_currency_summary">Selecciona tu moneda</string>
+    <string name="preferences_currency_key">currency</string>
+    <string name="preferences_currency_default_value">0</string>
+    <string name="preferences_profile_image_key">profile_image</string>
+    <string name="preferences_profile_image_title">Imagen de perfil</string>
+    <string name="about_description">diexpenses es la forma más sencilla de gestionar tus gastos en la nube. Puedes ver los gastos en la app para iOS y en un futuro desde la web.</string>
+    <string name="about_university">Universidad Pontificia de Salamanca</string>
+    <string name="about_mimo">Master en Informática Móvil</string>
+    <string name="about_diemaster">Diego Sepúlveda Blanco</string>
+    <string name="bank_account_description">Descripción</string>
+    <string name="bank_account_iban">IBAN</string>
+    <string name="bank_account_entity">Entidad</string>
+    <string name="bank_account_office">Oficina</string>
+    <string name="bank_account_control_digit">Dígito de control</string>
+    <string name="bank_account_number">Número de cuenta</string>
+    <string name="bank_account_balance">Importe</string>
+    <string name="bank_account_save">Guardar</string>
+    <string name="dialog_edit_edit">Editar</string>
+    <string name="dialog_delete">Borrar</string>
+    <string name="generic_year">Año</string>
+    <string name="generic_month">Mes</string>
+    <string name="movement_income">Ingreso</string>
+    <string name="movement_expense">Gasto</string>
+    <string name="movement_concept">Concepto</string>
+    <string name="movement_amount">Amount</string>
+    <string name="movement_create">Crear</string>
+    <string name="movement_kind_label">Tipo:</string>
+    <string name="movement_subkind_label">Subtipo:</string>
+    <string name="movement_bank_account_label">Cuenta bancaria:</string>
+    <string name="movement_transaction_date_label">Fecha de efecto:</string>
+
+</resources>
