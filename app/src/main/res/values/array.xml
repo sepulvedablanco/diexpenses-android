@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="currencies">
+    <string-array name="currencies" translatable="false" >
         <item>€</item>
         <item>$</item>
         <item>£</item>
     </string-array>
 
-    <string-array name="currencies_values">
+    <string-array name="currencies_values" translatable="false" >
         <item>0</item>
         <item>1</item>
         <item>2</item>
