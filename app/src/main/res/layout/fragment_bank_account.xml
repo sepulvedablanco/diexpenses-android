@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="@dimen/fab_margin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/bank_account_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/bank_account_description"/>
+
+    <EditText
+        android:id="@+id/bank_account_iban"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="4"
+        android:layout_below="@id/bank_account_description"
+        android:hint="@string/bank_account_iban"/>
+
+    <EditText
+        android:id="@+id/bank_account_entity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="4"
+        android:inputType="numberDecimal"
+        android:layout_below="@id/bank_account_iban"
+        android:hint="@string/bank_account_entity"/>
+
+    <EditText
+        android:id="@+id/bank_account_office"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="4"
+        android:inputType="numberDecimal"
+        android:layout_below="@id/bank_account_entity"
+        android:hint="@string/bank_account_office"/>
+
+    <EditText
+        android:id="@+id/bank_account_control_digit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="2"
+        android:inputType="numberDecimal"
+        android:layout_below="@id/bank_account_office"
+        android:hint="@string/bank_account_control_digit"/>
+
+    <EditText
+        android:id="@+id/bank_account_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="10"
+        android:inputType="numberDecimal"
+        android:layout_below="@id/bank_account_control_digit"
+        android:hint="@string/bank_account_number"/>
+
+    <EditText
+        android:id="@+id/bank_account_balance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:layout_below="@id/bank_account_number"
+        android:hint="@string/bank_account_balance"/>
+
+    <Button
+        android:id="@+id/bank_account_action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bank_account_balance"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:text="@string/bank_account_save"/>
+
+    <ProgressBar
+        android:id="@+id/bank_account_progress_bar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

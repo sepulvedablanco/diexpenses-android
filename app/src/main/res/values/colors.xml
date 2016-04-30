@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="diexpensesRed">#D3494E</color>
+    <color name="diexpensesGreen">#74C974</color>
+    <color name="diexpensesBlue">#86D8F7</color>
+    <color name="diexpensesTitle">#333333</color>
+    <color name="diexpensesLightGray">#EDEDED</color>
+
+    <color name="drawerDegradedEnd">#0276FD</color>
+
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ListPreference
+        android:title="@string/preferences_currency_title"
+        android:summary="@string/preferences_currency_summary"
+        android:key="@string/preferences_currency_key"
+        android:defaultValue="@string/preferences_currency_default_value"
+        android:entries="@array/currencies"
+        android:entryValues="@array/currencies_values" />
+
+    <Preference
+        android:key="@string/preferences_profile_image_key"
+        android:title="@string/preferences_profile_image_title" />
+
+</PreferenceScreen>

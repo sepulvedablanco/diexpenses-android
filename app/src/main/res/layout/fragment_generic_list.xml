@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/generic_add_new_tv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/generic_new_element_height"
+        android:gravity="center"
+        android:textSize="@dimen/generic_text_size"
+        android:textColor="@color/colorPrimaryDark"
+        android:background="@color/diexpensesLightGray" />
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/generic_month_selector_labels_layout"
+        android:layout_below="@id/generic_add_new_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/diexpensesGreen"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/generic_year_text_view_label"
+            android:layout_width="@dimen/no_width"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/no_width"
+            android:paddingStart="@dimen/no_width"
+            android:paddingRight="@dimen/generic_spinner_padding_right"
+            android:paddingEnd="@dimen/generic_spinner_padding_right"
+            android:text="@string/generic_year"
+            app:layout_widthPercent="50%" />
+
+        <TextView
+            android:id="@+id/generic_month_text_view_label"
+            android:layout_toRightOf="@id/generic_year_text_view_label"
+            android:layout_toEndOf="@id/generic_year_text_view_label"
+            android:layout_width="@dimen/no_width"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/no_width"
+            android:paddingStart="@dimen/no_width"
+            android:paddingRight="@dimen/generic_spinner_padding_right"
+            android:paddingEnd="@dimen/generic_spinner_padding_right"
+            android:text="@string/generic_month"
+            app:layout_widthPercent="50%" />
+
+    </android.support.percent.PercentRelativeLayout>
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/generic_month_selector_layout_spinners"
+        android:layout_below="@id/generic_month_selector_labels_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/diexpensesGreen"
+        android:visibility="gone">
+
+        <Spinner
+            android:id="@+id/generic_year_spinner"
+            android:layout_width="@dimen/no_width"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_widthPercent="50%" />
+
+        <Spinner
+            android:id="@+id/generic_month_spinner"
+            android:layout_toRightOf="@id/generic_year_spinner"
+            android:layout_toEndOf="@id/generic_year_spinner"
+            android:layout_width="@dimen/no_width"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_widthPercent="50%" />
+
+    </android.support.percent.PercentRelativeLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/generic_swipe_refresh_layout"
+        android:layout_below="@id/generic_month_selector_layout_spinners"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/generic_recycler_view"
+            android:layout_marginLeft="@dimen/fab_margin"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <ProgressBar
+        android:id="@+id/generic_progress_bar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

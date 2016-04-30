@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/about_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/about_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:title="@string/drawer_nav_about_diexpenses"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <TextView
+        android:id="@+id/about_description"
+        android:layout_margin="@dimen/fab_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/about_appbar"
+        android:text="@string/about_description" />
+
+    <TextView
+        android:id="@+id/about_university"
+        android:layout_margin="@dimen/fab_margin"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/about_description"
+        android:text="@string/about_university" />
+
+    <TextView
+        android:id="@+id/about_master"
+        android:layout_margin="@dimen/fab_margin"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/about_university"
+        android:text="@string/about_mimo" />
+
+    <TextView
+        android:id="@+id/about_diemaster"
+        android:layout_margin="@dimen/fab_margin"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/about_master"
+        android:text="@string/about_diemaster" />
+
+</RelativeLayout>

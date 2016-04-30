@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_action_home"
+            android:title="@string/drawer_nav_home" />
+        <item
+            android:id="@+id/nav_movements"
+            android:icon="@drawable/ic_action_movements"
+            android:title="@string/drawer_nav_movements" />
+        <item
+            android:id="@+id/nav_types"
+            android:icon="@drawable/ic_action_kinds"
+            android:title="@string/drawer_nav_types" />
+        <item
+            android:id="@+id/nav_accounts"
+            android:icon="@drawable/ic_action_bank_account2"
+            android:title="@string/drawer_nav_bank_accounts" />
+        <item
+            android:id="@+id/nav_statistics"
+            android:icon="@drawable/ic_action_statistics"
+            android:title="@string/drawer_nav_statistics" />
+    </group>
+
+    <item android:title="@string/drawer_communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_contact"
+                android:icon="@android:drawable/ic_dialog_email"
+                android:title="@string/drawer_nav_contact" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@android:drawable/ic_dialog_info"
+                android:title="@string/drawer_nav_about_diexpenses" />
+        </menu>
+    </item>
+
+</menu>

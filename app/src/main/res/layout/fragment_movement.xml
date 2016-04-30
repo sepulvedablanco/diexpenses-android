@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="@dimen/fab_margin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MainActivity">
+
+    <ToggleButton
+        android:id="@+id/movement_toggle_expense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textOn="@string/movement_expense"
+        android:textOff="@string/movement_income"/>
+
+    <EditText
+        android:id="@+id/movement_concept"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/movement_toggle_expense"
+        android:hint="@string/movement_concept" />
+
+    <EditText
+        android:id="@+id/movement_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:layout_below="@id/movement_concept"
+        android:hint="@string/movement_amount"/>
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/movement_kind_prl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/movement_amount">
+
+        <TextView
+            android:id="@+id/movement_kind_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/movement_spinner_row_height"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/generic_adjust_space"
+            android:paddingStart="@dimen/generic_adjust_space"
+            android:textSize="@dimen/generic_text_size"
+            android:text="@string/movement_kind_label"
+            app:layout_widthPercent="40%" />
+
+        <Spinner
+            android:id="@+id/movement_kind"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/movement_spinner_row_height"
+            android:layout_toRightOf="@id/movement_kind_text_view"
+            android:layout_toEndOf="@id/movement_kind_text_view"
+            app:layout_widthPercent="60%" />
+
+    </android.support.percent.PercentRelativeLayout>
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/movement_subkind_prl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/movement_kind_prl">
+
+        <TextView
+            android:id="@+id/movement_subkind_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/movement_spinner_row_height"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/generic_adjust_space"
+            android:paddingStart="@dimen/generic_adjust_space"
+            android:textSize="@dimen/generic_text_size"
+            android:text="@string/movement_subkind_label"
+            app:layout_widthPercent="40%" />
+
+        <Spinner
+            android:id="@+id/movement_subkind"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/movement_spinner_row_height"
+            android:layout_toRightOf="@id/movement_subkind_text_view"
+            android:layout_toEndOf="@id/movement_subkind_text_view"
+            app:layout_widthPercent="60%" />
+
+    </android.support.percent.PercentRelativeLayout>
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/movement_bank_account_prl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/movement_subkind_prl">
+
+        <TextView
+            android:id="@+id/movement_bank_account_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/movement_spinner_row_height"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/generic_adjust_space"
+            android:paddingStart="@dimen/generic_adjust_space"
+            android:textSize="@dimen/generic_text_size"
+            android:text="@string/movement_bank_account_label"
+            app:layout_widthPercent="40%" />
+
+        <Spinner
+            android:id="@+id/movement_bank_account"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/movement_spinner_row_height"
+            android:layout_toRightOf="@id/movement_bank_account_text_view"
+            android:layout_toEndOf="@id/movement_bank_account_text_view"
+            app:layout_widthPercent="60%" />
+
+    </android.support.percent.PercentRelativeLayout>
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/movement_transacion_date_prl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/movement_bank_account_prl">
+
+        <TextView
+            android:id="@+id/movement_transactiondate_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/movement_spinner_row_height"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/generic_adjust_space"
+            android:paddingStart="@dimen/generic_adjust_space"
+            android:textSize="@dimen/generic_text_size"
+            android:text="@string/movement_transaction_date_label"
+            app:layout_widthPercent="40%" />
+
+        <TextView
+            android:id="@+id/movement_transaction_date"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/movement_spinner_row_height"
+            android:layout_toRightOf="@id/movement_transactiondate_text_view"
+            android:layout_toEndOf="@id/movement_transactiondate_text_view"
+            android:paddingLeft="@dimen/generic_spinner_padding_left"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/generic_text_size"
+            android:clickable="true"
+            android:textColor="@color/colorPrimary"
+            app:layout_widthPercent="60%" />
+
+    </android.support.percent.PercentRelativeLayout>
+
+    <Button
+        android:id="@+id/movement_action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/movement_transacion_date_prl"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:text="@string/movement_create"/>
+
+    <ProgressBar
+        android:id="@+id/movement_progress_bar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone" />
+
+</RelativeLayout>
