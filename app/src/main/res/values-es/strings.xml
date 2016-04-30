@@ -29,10 +29,9 @@
     <string name="confirm_password">Confirmar contraseña</string>
     <string name="different_passwords">Las contraseñas no coinciden.</string>
 
-
     <string name="navigation_drawer_open">Abrir menu lateral</string>
     <string name="navigation_drawer_close">Cerrar menu lateral</string>
-    <string name="drawer_nav_home">Inicio</string>
+    <string name="drawer_nav_home">Posición global</string>
     <string name="drawer_nav_movements">Movimientos</string>
     <string name="drawer_nav_types">Tipos</string>
     <string name="drawer_nav_bank_accounts">Cuentas bancarias</string>
