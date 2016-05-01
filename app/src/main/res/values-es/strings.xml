@@ -51,6 +51,7 @@
     <string name="home_balance_low">¡No gastes tanto!</string>
     <string name="home_balance_medium">No ahorras nada…</string>
     <string name="home_balance_high">Este mes vas bien</string>
+    <string name="home_no_data">Todavía no has registrado ningún movimiento este mes.</string>
     <string name="kinds_new">Crear un tipo de gasto</string>
     <string name="kinds_new_title">Nuevo tipo de gasto</string>
     <string name="kinds_new_message">Introduce el nombre del tipo de gasto</string>

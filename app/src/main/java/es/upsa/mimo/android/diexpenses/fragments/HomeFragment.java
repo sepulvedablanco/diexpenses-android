@@ -248,8 +248,17 @@ public class HomeFragment extends Fragment {
             return;
         }
 
-        drawChart();
-        doBalance();
+        if(incomes == 0 && expenses == 0) {
+            setChartNoDataMessage();
+        } else {
+            drawChart();
+            doBalance();
+        }
+    }
+
+    private void setChartNoDataMessage() {
+        chart.setNoDataText(getString(R.string.home_no_data));
+        chart.invalidate();
     }
 
     private void drawChart() {

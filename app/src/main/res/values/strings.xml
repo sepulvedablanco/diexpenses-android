@@ -51,6 +51,7 @@
     <string name="home_balance_low">Do not spend much!</string>
     <string name="home_balance_medium">Spares nothing…</string>
     <string name="home_balance_high">This month you are doing well</string>
+    <string name="home_no_data">You have not yet recorded any movement this month.</string>
     <string name="kinds_new">Add new expense kind</string>
     <string name="kinds_new_title">New kind of expense</string>
     <string name="kinds_new_message">Enter the name of the kind of expense</string>
