@@ -5,11 +5,10 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "es.upsa.mimo.android.diexpenses"
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0"
+        applicationId "es.upsa.mimo.android.diexpenses"
     }
     buildTypes {
         release {
@@ -17,6 +16,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+        pro {
+            versionName "1.0"
+        }
+        free {
+            applicationIdSuffix = "free"
+//            applicationId = "es.upsa.mimo.android.diexpenses.free"
+            versionName "1.0-free"
+        }
+    }
+
 
     // Specify in http://jakewharton.github.io/butterknife/
     lintOptions {
