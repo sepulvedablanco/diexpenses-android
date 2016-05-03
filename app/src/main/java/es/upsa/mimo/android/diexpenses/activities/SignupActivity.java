@@ -6,7 +6,9 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnEditorAction;
 import es.upsa.mimo.android.diexpenses.R;
 import es.upsa.mimo.android.diexpenses.api.Requester;
 import es.upsa.mimo.android.diexpenses.models.Credential;
@@ -46,8 +49,16 @@ public class SignupActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
+    @OnEditorAction(R.id.signup_confirm_passwordET)
+    public boolean onEditorAction(TextView arg0, int arg1, KeyEvent arg2) {
+        if(arg1 == EditorInfo.IME_ACTION_DONE) {
+            onSignUp();
+        }
+        return false;
+    }
+
     @OnClick(R.id.signup_action)
-    public void onSignUp(View view) {
+    public void onSignUp() {
         Log.d(TAG, "onSignUp - start");
 
         btnSignup.setEnabled(false);
@@ -75,7 +86,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.signup_login_now)
-    public void onLogin(View view) {
+    public void onLogin() {
         Log.d(TAG, "onLogin - start");
         Intent intentLoginActivity = new Intent(this, LoginActivity.class);
         intentLoginActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

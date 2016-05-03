@@ -135,7 +135,7 @@ public class MovementDetailsFragment extends Fragment implements DatePickerDialo
     }
 
     @OnClick(R.id.movement_action)
-    public void onNewMovement(View view) {
+    public void onNewMovement() {
 
         btnAction.setEnabled(false);
 
@@ -156,14 +156,14 @@ public class MovementDetailsFragment extends Fragment implements DatePickerDialo
     }
 
     @OnClick(R.id.movement_transaction_date)
-    public void onSelectTransactionDate(View view) {
+    public void onSelectTransactionDate() {
         Diexpenses.checkDialog(getFragmentManager(), "DatePickerDialogFragment");
         DialogFragment datePickerDialog = DatePickerDialogFragment.newInstance(MovementDetailsFragment.this, "Select transaction date");
         datePickerDialog.show(getFragmentManager(), "DatePickerDialogFragment");
     }
 
     @OnItemSelected(R.id.movement_kind)
-    public void onKindSelected(View view) {
+    public void onKindSelected() {
 
         progressBar.setVisibility(View.VISIBLE);
 
@@ -173,7 +173,6 @@ public class MovementDetailsFragment extends Fragment implements DatePickerDialo
             loadSubkinds(kindIdSelected);
         }
     }
-
 
     private void loadSubkinds(long kindId) {
         String methodName = "loadSubkinds - ";

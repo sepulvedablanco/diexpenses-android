@@ -19,6 +19,9 @@
         android:id="@+id/movement_concept"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
         android:layout_below="@id/movement_toggle_expense"
         android:hint="@string/movement_concept" />
 

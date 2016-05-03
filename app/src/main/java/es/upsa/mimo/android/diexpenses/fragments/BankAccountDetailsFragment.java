@@ -5,18 +5,22 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.text.ParseException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnEditorAction;
 import es.upsa.mimo.android.diexpenses.R;
 import es.upsa.mimo.android.diexpenses.api.Requester;
 import es.upsa.mimo.android.diexpenses.models.BankAccount;
@@ -97,8 +101,16 @@ public class BankAccountDetailsFragment extends Fragment {
         }
     }
 
+    @OnEditorAction(R.id.bank_account_balance)
+    public boolean onEditorAction(TextView arg0, int arg1, KeyEvent arg2) {
+        if(arg1 == EditorInfo.IME_ACTION_DONE) {
+            onCreateOrEditBankAccount();
+        }
+        return false;
+    }
+
     @OnClick(R.id.bank_account_action)
-    public void onCreateOrEditBankAccount(View view) {
+    public void onCreateOrEditBankAccount() {
 
         btnAction.setEnabled(false);
 

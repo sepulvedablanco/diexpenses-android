@@ -9,6 +9,9 @@
         android:id="@+id/bank_account_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
         android:hint="@string/bank_account_description"/>
 
     <EditText
@@ -16,6 +19,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLength="4"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
         android:layout_below="@id/bank_account_description"
         android:hint="@string/bank_account_iban"/>
 
