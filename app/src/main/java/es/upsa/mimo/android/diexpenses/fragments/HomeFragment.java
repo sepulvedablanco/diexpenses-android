@@ -1,10 +1,14 @@
 package es.upsa.mimo.android.diexpenses.fragments;
 
 import android.app.Fragment;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +24,7 @@ import com.github.mikephil.charting.data.PieDataSet;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import java.text.NumberFormat;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -94,7 +98,7 @@ public class HomeFragment extends Fragment {
 
             ButterKnife.bind(this, getView());
 
-            tvGreetings.setText(String.format(getString(R.string.home_greeting), user.getName()));
+            initializeLabels();
 
             configChart();
 
@@ -109,7 +113,17 @@ public class HomeFragment extends Fragment {
             loadExpenses();
             loadIncomes();
             loadTotalAmount();
+
+            checkAndShowRateAppAlert();
         }
+    }
+
+    private void initializeLabels() {
+        tvGreetings.setText(getString(R.string.home_greeting, user.getName()));
+        String zero = Diexpenses.formatAmount(BigDecimal.ZERO);
+        tvTotalAmount.setText(getString(R.string.home_total_amount, zero, Diexpenses.getCurrency(getActivity())));
+        tvMonthIncomes.setText(getString(R.string.home_month_incomes, zero, Diexpenses.getCurrency(getActivity())));
+        tvMonthExpenses.setText(getString(R.string.home_month_expenses, zero, Diexpenses.getCurrency(getActivity())));
     }
 
     @OnClick(R.id.floating_action_button)
@@ -179,11 +193,9 @@ public class HomeFragment extends Fragment {
                 try {
                     addRequestFinishAndCheckLoadingMask();
                     String strExpenses = response.body().string();
-                    NumberFormat format = NumberFormat.getInstance(getResources().getConfiguration().locale);
-                    Number number = format.parse(strExpenses);
-                    expenses = number.doubleValue();
+                    expenses = Diexpenses.parseNumber(strExpenses);
                     Log.d(TAG, "Expenses=" + expenses);
-                    tvMonthExpenses.setText(getString(R.string.home_month_expenses) + strExpenses + Diexpenses.getCurrency(getActivity()));
+                    tvMonthExpenses.setText(getString(R.string.home_month_expenses, strExpenses, Diexpenses.getCurrency(getActivity())));
                     checkRequest();
                 } catch (Exception e) {
                     Log.e(TAG, "Error parsing expenses:", e);
@@ -204,11 +216,9 @@ public class HomeFragment extends Fragment {
                 try {
                     addRequestFinishAndCheckLoadingMask();
                     String strIncomes = response.body().string();
-                    NumberFormat format = NumberFormat.getInstance(getResources().getConfiguration().locale);
-                    Number number = format.parse(strIncomes);
-                    incomes = number.doubleValue();
+                    incomes = Diexpenses.parseNumber(strIncomes);
                     Log.d(TAG, "Incomes=" + incomes);
-                    tvMonthIncomes.setText(getString(R.string.home_month_incomes) + strIncomes + Diexpenses.getCurrency(getActivity()));
+                    tvMonthIncomes.setText(getString(R.string.home_month_incomes, strIncomes, Diexpenses.getCurrency(getActivity())));
                     checkRequest();
                 } catch (Exception e) {
                     Log.e(TAG, "Error parsing incomes:", e);
@@ -229,7 +239,8 @@ public class HomeFragment extends Fragment {
                 try {
                     addRequestFinishAndCheckLoadingMask();
                     String strTotalAmount = response.body().string();
-                    tvTotalAmount.setText(getString(R.string.home_total_amount) + strTotalAmount + Diexpenses.getCurrency(getActivity()));
+                    Log.d(TAG, "Total amount = " + strTotalAmount);
+                    tvTotalAmount.setText(getString(R.string.home_total_amount, strTotalAmount, Diexpenses.getCurrency(getActivity())));
                 } catch (Exception e) {
                     Log.e(TAG, "Error parsing total amount:", e);
                 }
@@ -301,4 +312,45 @@ public class HomeFragment extends Fragment {
 
         Log.d(TAG, methodName + "end");
     }
+
+    private void checkAndShowRateAppAlert() {
+        if (checkRateAppAlert()) {
+            showRateAppAlert();
+        }
+    }
+
+    private boolean checkRateAppAlert() {
+        boolean hasRated = Diexpenses.hasRated(getActivity());
+        if(hasRated) {
+            return false;
+        }
+        int counterOfUses = Diexpenses.getAppUseCounter(getActivity());
+        return counterOfUses % 10 == 0;
+    }
+
+    private void showRateAppAlert() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+        alert.setTitle(getString(R.string.rate_title));
+        alert.setIcon(R.mipmap.ic_launcher);
+        alert.setMessage(getString(R.string.rate_message));
+
+        alert.setPositiveButton(getString(R.string.rate_button), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(getString(R.string.protocol_market, getActivity().getPackageName())));
+                if (intent.resolveActivity(getActivity().getPackageManager()) == null) {
+                    intent.setData(Uri.parse(getString(R.string.protocol_market_url, getActivity().getPackageName())));
+                }
+                startActivity(intent);
+            }
+        });
+
+        alert.setNegativeButton(getString(R.string.common_cancel), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                //Do nothing
+            }
+        });
+        alert.show();
+    }
+
 }

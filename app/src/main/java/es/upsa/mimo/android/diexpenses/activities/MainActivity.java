@@ -33,6 +33,7 @@ import es.upsa.mimo.android.diexpenses.fragments.BankAccountsFragment;
 import es.upsa.mimo.android.diexpenses.fragments.HomeFragment;
 import es.upsa.mimo.android.diexpenses.fragments.KindsFragment;
 import es.upsa.mimo.android.diexpenses.fragments.MovementsFragment;
+import es.upsa.mimo.android.diexpenses.fragments.StatisticsFragment;
 import es.upsa.mimo.android.diexpenses.models.User;
 import es.upsa.mimo.android.diexpenses.utils.Constants;
 import es.upsa.mimo.android.diexpenses.utils.Diexpenses;
@@ -190,7 +191,8 @@ public class MainActivity extends AppCompatActivity
             getFragmentManager().beginTransaction().replace(R.id.content_main, bankAccountsFragment).commit();
         } else if (id == R.id.nav_statistics) {
             Log.d(TAG, "Statistics selected");
-
+            Fragment statisticsFragment = StatisticsFragment.newInstance(user.getId());
+            getFragmentManager().beginTransaction().replace(R.id.content_main, statisticsFragment).commit();
         } else if (id == R.id.nav_contact) {
             Log.d(TAG, "Contact selected");
             Intent intent = new Intent(Intent.ACTION_SENDTO);

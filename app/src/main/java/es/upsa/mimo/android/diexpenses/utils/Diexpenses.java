@@ -12,17 +12,16 @@ import android.util.Log;
 
 import java.math.BigDecimal;
 import java.text.DateFormat;
+import java.text.DateFormatSymbols;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import es.upsa.mimo.android.diexpenses.R;
 import es.upsa.mimo.android.diexpenses.models.User;
@@ -143,7 +142,7 @@ public class Diexpenses {
         return currency;
     }
 
-    public static int incrementAppUse(Context context) {
+    public static void incrementAppUse(Context context) {
         String methodName = "incrementAppUse - ";
         Log.d(TAG, methodName + "start.");
         SharedPreferences sharedPreferences = context.getSharedPreferences(Constants.SharedPreferences.NAME, Activity.MODE_PRIVATE);
@@ -151,6 +150,14 @@ public class Diexpenses {
         SharedPreferences.Editor editor= sharedPreferences.edit();
         editor.putInt(Constants.SharedPreferences.Parameters.Rate.COUNTER_OF_USES, ++counterOfUses);
         editor.commit();
+        Log.d(TAG, methodName + "end. CounterOfUses updated=" + counterOfUses);
+    }
+
+    public static int getAppUseCounter(Context context) {
+        String methodName = "getAppUseCounter - ";
+        Log.d(TAG, methodName + "start.");
+        SharedPreferences sharedPreferences = context.getSharedPreferences(Constants.SharedPreferences.NAME, Activity.MODE_PRIVATE);
+        int counterOfUses = sharedPreferences.getInt(Constants.SharedPreferences.Parameters.Rate.COUNTER_OF_USES, 0);
         Log.d(TAG, methodName + "end. CounterOfUses=" + counterOfUses);
         return counterOfUses;
     }
@@ -173,4 +180,26 @@ public class Diexpenses {
         BigDecimal amount = (BigDecimal) decimalFormatWithLocale.parseObject(strAmount);
         return amount;
     }
+
+    public static List<String> getYears() {
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        List<String> lstYears = new ArrayList<String>();
+        for(int i = currentYear ; i >= 2010 ; i--) {
+            lstYears.add(String.valueOf(i));
+        }
+        return lstYears;
+    }
+
+    public static List<String> getMonths() {
+        DateFormatSymbols dfs = new DateFormatSymbols();
+        String[] months = dfs.getMonths();
+
+        return Arrays.asList(months);
+    }
+
+    public static Double parseNumber(String strNumber) throws ParseException {
+        Number number = decimalFormatWithLocale.parse(strNumber);
+        return number.doubleValue();
+    }
+
 }

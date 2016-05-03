@@ -32,4 +32,8 @@ public class BankAccount implements Parcelable {
     private BigDecimal balance;
     private String description;
     private String completeBankAccount;
+
+    public BankAccount(String description) {
+        this.description = description;
+    }
 }

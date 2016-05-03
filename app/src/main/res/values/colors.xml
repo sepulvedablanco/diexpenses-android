@@ -12,4 +12,6 @@
 
     <color name="drawerDegradedEnd">#0276FD</color>
 
+    <color name="transparent">#00000000</color>
+
 </resources>

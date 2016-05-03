@@ -171,8 +171,8 @@ public class MovementsFragment extends Fragment implements NoticeDialogFragment.
 
         Calendar cToday = Calendar.getInstance();
 
-        List<String> lstYears = getYears();
-        List<String> lstMonths = Diexpenses.capitalize(getMonths());
+        List<String> lstYears = Diexpenses.getYears();
+        List<String> lstMonths = Diexpenses.capitalize(Diexpenses.getMonths());
 
         ArrayAdapter<String> adapterYears = new ArrayAdapter<String>(getActivity(), R.layout.spinner_textview_align, lstYears);
         adapterYears.setDropDownViewResource(R.layout.spinner_textview_align);
@@ -221,7 +221,7 @@ public class MovementsFragment extends Fragment implements NoticeDialogFragment.
 
     @OnItemSelected(R.id.generic_year_spinner)
     public void onYearSpinnerSelected(AdapterView<?> parent, View view, int position, long id) {
-        int year = Integer.parseInt(getYears().get(position));
+        int year = Integer.parseInt(Diexpenses.getYears().get(position));
         if (year == iYearSelected) {
             Log.d(TAG, "Same year selected");
             return;
@@ -347,21 +347,5 @@ public class MovementsFragment extends Fragment implements NoticeDialogFragment.
             }
         });
         Log.d(TAG, methodName + "end");
-    }
-
-    public List<String> getYears() {
-        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-        List<String> lstYears = new ArrayList<String>();
-        for(int i = currentYear ; i >= 2010 ; i--) {
-            lstYears.add(String.valueOf(i));
-        }
-        return lstYears;
-    }
-
-    public List<String> getMonths() {
-        DateFormatSymbols dfs = new DateFormatSymbols();
-        String[] months = dfs.getMonths();
-
-        return Arrays.asList(months);
     }
 }

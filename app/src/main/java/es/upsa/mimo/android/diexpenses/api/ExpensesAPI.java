@@ -90,4 +90,8 @@ public interface ExpensesAPI {
     @DELETE("user/{userId}/financialMovement/{movementId}")
     Call<GenericResponse> deleteMovement(@Path("userId") long userId, @Path("movementId") long movementId);
 
+    @GET("user/{userId}/financialMovements/amounts")
+    Call<ResponseBody> getStatistics(@Path("userId") long userId, @Query("e") boolean isExpense,
+                                     @Query("y") Integer year, @Query("m") Integer month, @Query("t") Long kindId,
+                                     @Query("s") Long subkindId, @Query("b") Long bankAccountId);
 }

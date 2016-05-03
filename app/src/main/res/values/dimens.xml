@@ -19,5 +19,7 @@
     <dimen name="generic_spinner_padding_right">20dp</dimen>
     <dimen name="drawer_image">75dp</dimen>
     <dimen name="movement_spinner_row_height">30dp</dimen>
+    <dimen name="statistics_spinner_row_height">30dp</dimen>
     <dimen name="generic_adjust_space">5dp</dimen>
+    <dimen name="mask_padding_top">80dp</dimen>
 </resources>

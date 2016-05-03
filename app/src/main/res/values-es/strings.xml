@@ -42,10 +42,10 @@
     <string name="menu_option_settings">Preferencias</string>
     <string name="menu_option_logout">Salir</string>
     <string name="send_mail">Enviar correo…</string>
-    <string name="home_greeting">¡Hola %s!</string>
-    <string name="home_month_incomes">Ingresos del mes: </string>
-    <string name="home_total_amount">Ahorrado en total: </string>
-    <string name="home_month_expenses">Gastos del mes: </string>
+    <string name="home_greeting">¡Hola %1$s!</string>
+    <string name="home_month_incomes">Ingresos del mes: %1$s%2$s</string>
+    <string name="home_total_amount">Ahorrado en total: %1$s%2$s</string>
+    <string name="home_month_expenses">Gastos del mes: %1$s%2$s</string>
     <string name="home_expenses">Gastos</string>
     <string name="home_incomes">Ingresos</string>
     <string name="home_balance_low">¡No gastes tanto!</string>
@@ -89,9 +89,9 @@
     <string name="email_to">d.sepulvedabl@gmail.com</string>
     <string name="rate_button">Valorar</string>
     <string name="rate_title">Valorar diexpenses</string>
-    <string name="rate_message">Gracias por utilizar esta app. Por favor, valórala.</string>
-    <string name="protocol_market">market://details?id=</string>
-    <string name="protocol_market_url">http://play.google.com/store/apps/details?id=</string>
+    <string name="rate_message">Gracias por utilizar diexpenses. Por favor, emplea un momento para valorarla.</string>
+    <string name="protocol_market">market://details?id=%1$s</string>
+    <string name="protocol_market_url">http://play.google.com/store/apps/details?id=%1$s</string>
     <string name="preferences_currency_title">Moneda</string>
     <string name="preferences_currency_summary">Selecciona tu moneda</string>
     <string name="preferences_currency_key">currency</string>
@@ -123,5 +123,19 @@
     <string name="movement_subkind_label">Subtipo:</string>
     <string name="movement_bank_account_label">Cuenta bancaria:</string>
     <string name="movement_transaction_date_label">Fecha de efecto:</string>
+    <string name="statistics_year_label">Año:</string>
+    <string name="statistics_month_label">Mes:</string>
+    <string name="statistics_kind_label">Kind:</string>
+    <string name="statistics_subkind_label">Subkind:</string>
+    <string name="statistics_bank_account_label">Cuenta bancaria:</string>
+    <string name="statistics_action">Ver estadísticas</string>
+    <string name="statistics_mask_label">Calculando estadísticas...</string>
+    <string name="statistics_select_kind">Selecciona un tipo primero</string>
+    <string name="statistics_historical">Histórico</string>
+    <string name="statistics_every_month">Todos los meses</string>
+    <string name="statistics_all_kinds">Todos los tipos</string>
+    <string name="statistics_all_subkinds">Todos los subtipos</string>
+    <string name="statistics_all_bank_accounts">Todas las cuentas</string>
+    <string name="statistics_no_data">No se han recuperado datos</string>
 
 </resources>
