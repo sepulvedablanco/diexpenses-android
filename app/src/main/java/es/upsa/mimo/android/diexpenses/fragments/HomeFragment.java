@@ -325,7 +325,7 @@ public class HomeFragment extends Fragment {
             return false;
         }
         int counterOfUses = Diexpenses.getAppUseCounter(getActivity());
-        return counterOfUses % 10 == 0;
+        return counterOfUses != 0 && counterOfUses % 10 == 0;
     }
 
     private void showRateAppAlert() {
