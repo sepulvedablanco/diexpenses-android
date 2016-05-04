@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLength="4"
-        android:inputType="numberDecimal"
+        android:inputType="number"
         android:layout_below="@id/bank_account_iban"
         android:hint="@string/bank_account_entity"/>
 
@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLength="4"
-        android:inputType="numberDecimal"
+        android:inputType="number"
         android:layout_below="@id/bank_account_entity"
         android:hint="@string/bank_account_office"/>
 
@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLength="2"
-        android:inputType="numberDecimal"
+        android:inputType="number"
         android:layout_below="@id/bank_account_office"
         android:hint="@string/bank_account_control_digit"/>
 
@@ -57,7 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLength="10"
-        android:inputType="numberDecimal"
+        android:inputType="number"
         android:layout_below="@id/bank_account_control_digit"
         android:hint="@string/bank_account_number"/>
 
