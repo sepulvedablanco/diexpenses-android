@@ -175,12 +175,10 @@ public class MovementsFragment extends Fragment implements NoticeDialogFragment.
         List<String> lstMonths = Diexpenses.capitalize(Diexpenses.getMonths());
 
         ArrayAdapter<String> adapterYears = new ArrayAdapter<String>(getActivity(), R.layout.spinner_textview_align, lstYears);
-        adapterYears.setDropDownViewResource(R.layout.spinner_textview_align);
         spinnerYear.setAdapter(adapterYears);
         spinnerYear.setSelection(0);
 
         ArrayAdapter<String> adapterMonths = new ArrayAdapter<String>(getActivity(), R.layout.spinner_textview_align, lstMonths);
-        adapterMonths.setDropDownViewResource(R.layout.spinner_textview_align);
         spinnerMonth.setAdapter(adapterMonths);
         spinnerMonth.setSelection(cToday.get(Calendar.MONTH));
         Log.d(TAG, methodName + "end");

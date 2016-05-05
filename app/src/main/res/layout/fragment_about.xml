@@ -26,33 +26,34 @@
         android:layout_margin="@dimen/fab_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/text.center"
         android:layout_below="@id/about_appbar"
         android:text="@string/about_description" />
 
     <TextView
         android:id="@+id/about_university"
         android:layout_margin="@dimen/fab_margin"
-        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/text.center"
         android:layout_below="@id/about_description"
         android:text="@string/about_university" />
 
     <TextView
         android:id="@+id/about_master"
         android:layout_margin="@dimen/fab_margin"
-        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/text.center"
         android:layout_below="@id/about_university"
         android:text="@string/about_mimo" />
 
     <TextView
         android:id="@+id/about_diemaster"
         android:layout_margin="@dimen/fab_margin"
-        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/text.center"
         android:layout_below="@id/about_master"
         android:text="@string/about_diemaster" />
 

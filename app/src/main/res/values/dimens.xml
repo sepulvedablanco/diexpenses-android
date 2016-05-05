@@ -7,7 +7,7 @@
     <dimen name="nav_header_height">160dp</dimen>
     <dimen name="image">50dp</dimen>
     <dimen name="image_space">5dp</dimen>
-    <dimen name="bank_account_margin">10dp</dimen>
+    <dimen name="bank_account_margin">7dp</dimen>
     <dimen name="title">30sp</dimen>
     <dimen name="dialog_drawable_padding">5dp</dimen>
     <dimen name="no_width">0dp</dimen>
@@ -22,4 +22,5 @@
     <dimen name="statistics_spinner_row_height">30dp</dimen>
     <dimen name="generic_adjust_space">5dp</dimen>
     <dimen name="mask_padding_top">80dp</dimen>
+    <dimen name="balance_right_margin">25dp</dimen>
 </resources>

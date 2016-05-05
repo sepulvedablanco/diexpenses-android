@@ -11,4 +11,107 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="title">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/title</item>
+        <item name="android:textColor">@color/diexpensesTitle</item>
+    </style>
+
+    <style name="actionButton" parent="android:TextAppearance.DeviceDefault.Medium">
+        <item name="android:layout_marginTop">@dimen/fab_margin</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="link" parent="android:TextAppearance.DeviceDefault.Medium">
+        <item name="android:paddingTop">@dimen/fab_margin</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/generic_text_size</item>
+    </style>
+
+    <style name="statistics_text_view">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/generic_adjust_space</item>
+        <item name="android:textSize">@dimen/generic_text_size</item>
+    </style>
+
+    <style name="progress_bar_center_hide" parent="android:Widget.DeviceDefault.Light.ProgressBar.Large">
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="dialog_option">
+        <item name="android:paddingLeft">@dimen/fab_margin</item>
+        <item name="android:layout_margin">@dimen/fab_margin</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">@dimen/dialog_drawable_padding</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="dialog_option.green">
+        <item name="android:textColor">@color/diexpensesGreen</item>
+    </style>
+
+    <style name="dialog_option.red">
+        <item name="android:textColor">@color/diexpensesRed</item>
+    </style>
+
+    <style name="text">
+        <item name="android:textSize">@dimen/generic_text_size</item>
+    </style>
+
+    <style name="text.center">
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="text.center.add_box">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:background">@color/diexpensesLightGray</item>
+    </style>
+
+    <style name="text.center.with_padding">
+        <item name="android:paddingLeft">@dimen/no_width</item>
+        <item name="android:paddingRight">@dimen/generic_spinner_padding_right</item>
+    </style>
+
+    <style name="text.margin_left_bottom">
+        <item name="android:layout_marginBottom">@dimen/fab_margin</item>
+        <item name="android:layout_marginLeft">@dimen/fab_margin</item>
+    </style>
+
+    <style name="text.center_vertical">
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="text.center_vertical.padding_left">
+        <item name="android:paddingLeft">@dimen/generic_adjust_space</item>
+    </style>
+
+    <style name="text.center_vertical.custom_padding_left">
+        <item name="android:paddingLeft">@dimen/generic_spinner_padding_left</item>
+    </style>
+
+    <style name="text.statistics_mask">
+        <item name="android:paddingTop">@dimen/mask_padding_top</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="text.bank_account_label_up">
+        <item name="android:layout_marginTop">@dimen/bank_account_margin</item>
+    </style>
+
+    <style name="text.bank_account_label_down">
+        <item name="android:layout_marginBottom">@dimen/bank_account_margin</item>
+    </style>
+
+    <style name="row_icon">
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginRight">@dimen/image_space</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:adjustViewBounds">true</item>
+    </style>
+
 </resources>

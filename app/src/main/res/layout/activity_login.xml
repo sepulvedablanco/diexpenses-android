@@ -6,16 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/activity_vertical_margin"
-    tools:context=".LoginActivity">
+    tools:context=".activities.LoginActivity">
 
     <TextView
         android:id="@+id/login_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        style="@style/title"
         android:text="@string/diexpenses"
-        android:textSize="@dimen/title"
-        android:textColor="@color/diexpensesTitle"
         app:layout_heightPercent="30%" />
 
 
@@ -56,35 +54,24 @@
 
     <Button
         android:id="@+id/login_signIn"
-        style="?android:textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/actionButton"
         android:layout_below="@id/signup_password"
-        android:layout_marginTop="@dimen/fab_margin"
-        android:background="@color/colorPrimary"
-        android:textColor="@android:color/white"
-        android:text="@string/sign_in"
-        android:textStyle="bold" />
+        android:text="@string/sign_in" />
 
     <TextView
         android:id="@+id/login_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/login_signIn"
+        style="@style/link"
         android:clickable="true"
-        android:paddingTop="@dimen/fab_margin"
-        android:gravity="center"
-        android:autoLink="web"
-        android:textColor="@color/colorPrimary"
         android:text="@string/register_question" />
 
     <ProgressBar
         android:id="@+id/login_progress_bar"
-        style="?android:attr/progressBarStyleLarge"
+        style="@style/progress_bar_center_hide"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:visibility="gone" />
-
+        android:layout_height="wrap_content" />
 </android.support.percent.PercentRelativeLayout>

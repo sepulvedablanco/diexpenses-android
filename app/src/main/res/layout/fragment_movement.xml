@@ -43,10 +43,7 @@
             android:id="@+id/movement_kind_text_view"
             android:layout_width="match_parent"
             android:layout_height="@dimen/movement_spinner_row_height"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/generic_adjust_space"
-            android:paddingStart="@dimen/generic_adjust_space"
-            android:textSize="@dimen/generic_text_size"
+            style="@style/text.center_vertical.padding_left"
             android:text="@string/movement_kind_label"
             app:layout_widthPercent="40%" />
 
@@ -70,10 +67,7 @@
             android:id="@+id/movement_subkind_text_view"
             android:layout_width="match_parent"
             android:layout_height="@dimen/movement_spinner_row_height"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/generic_adjust_space"
-            android:paddingStart="@dimen/generic_adjust_space"
-            android:textSize="@dimen/generic_text_size"
+            style="@style/text.center_vertical.padding_left"
             android:text="@string/movement_subkind_label"
             app:layout_widthPercent="40%" />
 
@@ -97,10 +91,7 @@
             android:id="@+id/movement_bank_account_text_view"
             android:layout_width="match_parent"
             android:layout_height="@dimen/movement_spinner_row_height"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/generic_adjust_space"
-            android:paddingStart="@dimen/generic_adjust_space"
-            android:textSize="@dimen/generic_text_size"
+            style="@style/text.center_vertical.padding_left"
             android:text="@string/movement_bank_account_label"
             app:layout_widthPercent="40%" />
 
@@ -124,10 +115,7 @@
             android:id="@+id/movement_transactiondate_text_view"
             android:layout_width="match_parent"
             android:layout_height="@dimen/movement_spinner_row_height"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/generic_adjust_space"
-            android:paddingStart="@dimen/generic_adjust_space"
-            android:textSize="@dimen/generic_text_size"
+            style="@style/text.center_vertical.padding_left"
             android:text="@string/movement_transaction_date_label"
             app:layout_widthPercent="40%" />
 
@@ -137,9 +125,7 @@
             android:layout_height="@dimen/movement_spinner_row_height"
             android:layout_toRightOf="@id/movement_transactiondate_text_view"
             android:layout_toEndOf="@id/movement_transactiondate_text_view"
-            android:paddingLeft="@dimen/generic_spinner_padding_left"
-            android:gravity="center_vertical"
-            android:textSize="@dimen/generic_text_size"
+            style="@style/text.center_vertical.custom_padding_left"
             android:clickable="true"
             android:textColor="@color/colorPrimary"
             app:layout_widthPercent="60%" />
@@ -150,19 +136,14 @@
         android:id="@+id/movement_action"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/actionButton"
         android:layout_below="@id/movement_transacion_date_prl"
-        android:layout_marginTop="@dimen/fab_margin"
-        android:background="@color/colorPrimary"
-        android:textColor="@android:color/white"
         android:text="@string/movement_create"/>
 
     <ProgressBar
         android:id="@+id/movement_progress_bar"
-        style="?android:attr/progressBarStyleLarge"
+        style="@style/progress_bar_center_hide"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:visibility="gone" />
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

@@ -59,9 +59,9 @@
     <string name="kinds_edit_message">Enter the new name expense kind</string>
     <string name="kinds_remove_title">Remove expense kind</string>
     <string name="kinds_remove_message">Are you sure you want to delete the expense kind "%1$s"</string>
-    <string name="kinds_menu_title">Expende kind "%1$s"</string>
+    <string name="kinds_menu_title">Expense kind "%1$s"</string>
     <string name="subkinds_new">Add new expense subkind</string>
-    <string name="subkinds_menu_title">Expende subkind "%1$s"</string>
+    <string name="subkinds_menu_title">Expense subkind "%1$s"</string>
     <string name="subkinds_new_title">New subkind of expense</string>
     <string name="subkinds_new_message">Enter the name of the subkind of expense</string>
     <string name="subkinds_edit_title">Edit subkind expense</string>

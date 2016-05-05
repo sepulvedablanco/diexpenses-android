@@ -9,10 +9,7 @@
         android:id="@+id/generic_add_new_tv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/generic_new_element_height"
-        android:gravity="center"
-        android:textSize="@dimen/generic_text_size"
-        android:textColor="@color/colorPrimaryDark"
-        android:background="@color/diexpensesLightGray" />
+        style="@style/text.center.add_box" />
 
     <android.support.percent.PercentRelativeLayout
         android:id="@+id/generic_month_selector_labels_layout"
@@ -27,12 +24,8 @@
             android:id="@+id/generic_year_text_view_label"
             android:layout_width="@dimen/no_width"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            style="@style/text.center.with_padding"
             android:layout_weight="1"
-            android:paddingLeft="@dimen/no_width"
-            android:paddingStart="@dimen/no_width"
-            android:paddingRight="@dimen/generic_spinner_padding_right"
-            android:paddingEnd="@dimen/generic_spinner_padding_right"
             android:text="@string/generic_year"
             app:layout_widthPercent="50%" />
 
@@ -42,12 +35,8 @@
             android:layout_toEndOf="@id/generic_year_text_view_label"
             android:layout_width="@dimen/no_width"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            style="@style/text.center.with_padding"
             android:layout_weight="1"
-            android:paddingLeft="@dimen/no_width"
-            android:paddingStart="@dimen/no_width"
-            android:paddingRight="@dimen/generic_spinner_padding_right"
-            android:paddingEnd="@dimen/generic_spinner_padding_right"
             android:text="@string/generic_month"
             app:layout_widthPercent="50%" />
 
@@ -66,7 +55,6 @@
             android:id="@+id/generic_year_spinner"
             android:layout_width="@dimen/no_width"
             android:layout_height="wrap_content"
-            android:gravity="center"
             app:layout_widthPercent="50%" />
 
         <Spinner
@@ -75,7 +63,6 @@
             android:layout_toEndOf="@id/generic_year_spinner"
             android:layout_width="@dimen/no_width"
             android:layout_height="wrap_content"
-            android:gravity="center"
             app:layout_widthPercent="50%" />
 
     </android.support.percent.PercentRelativeLayout>
@@ -97,11 +84,8 @@
 
     <ProgressBar
         android:id="@+id/generic_progress_bar"
-        style="?android:attr/progressBarStyleLarge"
+        style="@style/progress_bar_center_hide"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:visibility="gone" />
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

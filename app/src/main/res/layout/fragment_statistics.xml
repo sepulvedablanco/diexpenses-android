@@ -17,16 +17,13 @@
             android:id="@+id/statistics_year_text_view"
             android:layout_width="match_parent"
             android:layout_height="@dimen/statistics_spinner_row_height"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/generic_adjust_space"
-            android:paddingStart="@dimen/generic_adjust_space"
-            android:textSize="@dimen/generic_text_size"
+            style="@style/statistics_text_view"
             android:text="@string/statistics_year_label"
             app:layout_widthPercent="40%" />
 
         <Spinner
             android:id="@+id/statistics_year_spinner"
-            android:layout_width="@dimen/no_width"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/statistics_spinner_row_height"
             android:layout_toRightOf="@id/statistics_year_text_view"
             android:layout_toEndOf="@id/statistics_year_text_view"
@@ -44,16 +41,13 @@
             android:id="@+id/statistics_month_text_view"
             android:layout_width="match_parent"
             android:layout_height="@dimen/statistics_spinner_row_height"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/generic_adjust_space"
-            android:paddingStart="@dimen/generic_adjust_space"
-            android:textSize="@dimen/generic_text_size"
+            style="@style/statistics_text_view"
             android:text="@string/statistics_month_label"
             app:layout_widthPercent="40%" />
 
         <Spinner
             android:id="@+id/statistics_month_spinner"
-            android:layout_width="@dimen/no_width"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/statistics_spinner_row_height"
             android:layout_toRightOf="@id/statistics_month_text_view"
             android:layout_toEndOf="@id/statistics_month_text_view"
@@ -71,10 +65,7 @@
             android:id="@+id/statistics_kind_text_view"
             android:layout_width="match_parent"
             android:layout_height="@dimen/statistics_spinner_row_height"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/generic_adjust_space"
-            android:paddingStart="@dimen/generic_adjust_space"
-            android:textSize="@dimen/generic_text_size"
+            style="@style/statistics_text_view"
             android:text="@string/statistics_kind_label"
             app:layout_widthPercent="40%" />
 
@@ -98,10 +89,7 @@
             android:id="@+id/statistics_subkind_text_view"
             android:layout_width="match_parent"
             android:layout_height="@dimen/statistics_spinner_row_height"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/generic_adjust_space"
-            android:paddingStart="@dimen/generic_adjust_space"
-            android:textSize="@dimen/generic_text_size"
+            style="@style/statistics_text_view"
             android:text="@string/statistics_subkind_label"
             app:layout_widthPercent="40%" />
 
@@ -125,10 +113,7 @@
             android:id="@+id/statistics_bank_account_text_view"
             android:layout_width="match_parent"
             android:layout_height="@dimen/statistics_spinner_row_height"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/generic_adjust_space"
-            android:paddingStart="@dimen/generic_adjust_space"
-            android:textSize="@dimen/generic_text_size"
+            style="@style/statistics_text_view"
             android:text="@string/statistics_bank_account_label"
             app:layout_widthPercent="40%" />
 
@@ -147,10 +132,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/statistics_bank_account_prl"
-        android:layout_marginTop="@dimen/fab_margin"
+        style="@style/actionButton"
         android:layout_marginBottom="@dimen/fab_margin"
-        android:background="@color/colorPrimary"
-        android:textColor="@android:color/white"
         android:text="@string/statistics_action"/>
 
     <com.github.mikephil.charting.charts.PieChart
@@ -162,11 +145,9 @@
 
     <ProgressBar
         android:id="@+id/statistics_progress_bar"
-        style="?android:attr/progressBarStyleLarge"
+        style="@style/progress_bar_center_hide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone"
         tools:visibility="visible" />
 
     <TextView
@@ -174,11 +155,9 @@
         android:background="@color/transparent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/text.statistics_mask"
         android:layout_centerInParent="true"
-        android:paddingTop="@dimen/mask_padding_top"
-        android:textSize="@dimen/generic_text_size"
         android:text="@string/statistics_mask_label"
-        android:visibility="gone"
         tools:visibility="visible" />
 
 </RelativeLayout>

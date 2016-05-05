@@ -11,38 +11,31 @@
 
     <TextView
         android:id="@+id/home_greetings"
-        android:layout_marginBottom="@dimen/fab_margin"
-        android:layout_marginLeft="@dimen/fab_margin"
-        android:layout_marginStart="@dimen/fab_margin"
-        android:gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/fab_margin"
+        style="@style/text.center"
+        android:gravity="center_horizontal" />
 
     <TextView
         android:id="@+id/home_total_amount"
-        android:layout_marginBottom="@dimen/fab_margin"
-        android:layout_marginLeft="@dimen/fab_margin"
-        android:layout_marginStart="@dimen/fab_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/text.margin_left_bottom"
         android:layout_below="@id/home_greetings" />
 
     <TextView
         android:id="@+id/home_month_incomes"
-        android:layout_marginBottom="@dimen/fab_margin"
-        android:layout_marginLeft="@dimen/fab_margin"
-        android:layout_marginStart="@dimen/fab_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/text.margin_left_bottom"
         android:layout_below="@id/home_total_amount" />
 
     <TextView
         android:id="@+id/home_month_expenses"
-        android:layout_marginBottom="@dimen/fab_margin"
-        android:layout_marginLeft="@dimen/fab_margin"
-        android:layout_marginStart="@dimen/fab_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/text.margin_left_bottom"
         android:layout_below="@id/home_month_incomes" />
 
     <com.github.mikephil.charting.charts.PieChart
@@ -54,9 +47,10 @@
 
     <TextView
         android:id="@+id/home_balance"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        style="@style/text.center"
+        android:paddingRight="@dimen/balance_right_margin"
         android:layout_below="@id/home_chart"/>
 
     <android.support.design.widget.FloatingActionButton
@@ -72,11 +66,8 @@
 
     <ProgressBar
         android:id="@+id/home_progress_bar"
-        style="?android:attr/progressBarStyleLarge"
+        style="@style/progress_bar_center_hide"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:visibility="gone" />
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

@@ -96,7 +96,7 @@ public class StatisticsFragment extends Fragment {
 
             ButterKnife.bind(this, getView());
 
-            showMask(View.VISIBLE);
+            progressBar.setVisibility(View.VISIBLE);
 
             configChart();
 
@@ -114,19 +114,19 @@ public class StatisticsFragment extends Fragment {
 
     private void setDefaultKindAdapter() {
         KindBaseSpinAdapter<Kind> kindAdapter = new KindBaseSpinAdapter<Kind>(getActivity(),
-                android.R.layout.simple_spinner_item, Arrays.asList(new Kind(getString(R.string.statistics_all_kinds))));
+                android.R.layout.simple_list_item_1, Arrays.asList(new Kind(getString(R.string.statistics_all_kinds))));
         spinnerKind.setAdapter(kindAdapter);
     }
 
     private void setDefaultSubkindAdapter() {
         KindBaseSpinAdapter<Subkind> subkindAdapter = new KindBaseSpinAdapter<Subkind>(getActivity(),
-                android.R.layout.simple_spinner_item, Arrays.asList(new Subkind(getString(R.string.statistics_select_kind))));
+                android.R.layout.simple_list_item_1, Arrays.asList(new Subkind(getString(R.string.statistics_select_kind))));
         spinnerSubkind.setAdapter(subkindAdapter);
     }
 
     private void setDefaultBankAccountAdapter() {
         BankAccountSpinAdapter bankAccountAdapter = new BankAccountSpinAdapter(getActivity(),
-                android.R.layout.simple_spinner_item, Arrays.asList(new BankAccount(getString(R.string.statistics_all_bank_accounts))));
+                android.R.layout.simple_list_item_1, Arrays.asList(new BankAccount(getString(R.string.statistics_all_bank_accounts))));
         spinnerBankAccount.setAdapter(bankAccountAdapter);
     }
 
@@ -145,11 +145,9 @@ public class StatisticsFragment extends Fragment {
         lstMonths.add(0, getString(R.string.statistics_every_month));
 
         ArrayAdapter<String> adapterYears = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, lstYears);
-        adapterYears.setDropDownViewResource(android.R.layout.simple_list_item_1);
         spinnerYear.setAdapter(adapterYears);
 
         ArrayAdapter<String> adapterMonths = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, lstMonths);
-        adapterMonths.setDropDownViewResource(android.R.layout.simple_list_item_1);
         spinnerMonth.setAdapter(adapterMonths);
         Log.d(TAG, methodName + "end");
     }
@@ -168,14 +166,14 @@ public class StatisticsFragment extends Fragment {
 
                 kindsLoaded = true;
                 if(bankAccountsLoaded) {
-                    showMask(View.GONE);
+                    progressBar.setVisibility(View.GONE);
                 }
 
                 List<Kind> lstKinds = response.body();
                 Collections.sort(lstKinds, new KindBaseComparator());
                 lstKinds.add(0, new Kind(getString(R.string.statistics_all_kinds)));
                 KindBaseSpinAdapter<Kind> kindAdapter = new KindBaseSpinAdapter<Kind>(getActivity(),
-                        android.R.layout.simple_spinner_item, lstKinds);
+                        android.R.layout.simple_list_item_1, lstKinds);
                 spinnerKind.setAdapter(kindAdapter);
 
                 Log.d(TAG, methodName + "end");
@@ -205,11 +203,13 @@ public class StatisticsFragment extends Fragment {
                 String methodName = "onResponse - ";
                 Log.d(TAG, methodName + "start");
 
+                progressBar.setVisibility(View.GONE);
+
                 List<Subkind> lstSubkinds = response.body();
                 Collections.sort(lstSubkinds, new KindBaseComparator());
                 lstSubkinds.add(0, new Subkind(getString(R.string.statistics_all_subkinds)));
                 KindBaseSpinAdapter<Subkind> subkindAdapter = new KindBaseSpinAdapter<Subkind>(getActivity(),
-                        android.R.layout.simple_spinner_item, lstSubkinds);
+                        android.R.layout.simple_list_item_1, lstSubkinds);
                 spinnerSubkind.setAdapter(subkindAdapter);
                 Log.d(TAG, methodName + "end");
             }
@@ -235,14 +235,14 @@ public class StatisticsFragment extends Fragment {
 
                 bankAccountsLoaded = true;
                 if(kindsLoaded) {
-                    showMask(View.GONE);
+                    progressBar.setVisibility(View.GONE);
                 }
 
                 List<BankAccount> lstBankAccounts = response.body();
                 Collections.sort(lstBankAccounts, new BankAccountComparator());
                 lstBankAccounts.add(0, new BankAccount(getString(R.string.statistics_all_bank_accounts)));
                 BankAccountSpinAdapter bankAccountAdapter = new BankAccountSpinAdapter(getActivity(),
-                        android.R.layout.simple_spinner_item, lstBankAccounts);
+                        android.R.layout.simple_list_item_1, lstBankAccounts);
                 spinnerBankAccount.setAdapter(bankAccountAdapter);
                 Log.d(TAG, methodName + "end");
             }
@@ -395,6 +395,7 @@ public class StatisticsFragment extends Fragment {
             if(kindIdSelected == null) {
                 setDefaultSubkindAdapter();
             } else {
+                progressBar.setVisibility(View.VISIBLE);
                 loadSubkinds(kindIdSelected);
             }
         }

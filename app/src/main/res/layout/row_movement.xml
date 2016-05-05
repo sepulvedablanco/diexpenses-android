@@ -10,28 +10,32 @@
         android:id="@+id/row_movement_icon"
         android:layout_width="@dimen/image"
         android:layout_height="@dimen/image"
-        android:layout_marginRight="@dimen/image_space"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true" />
+        style="row_icon" />
 
     <TextView
         android:id="@+id/row_movement_concept_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/row_movement_icon" />
+        style="@style/text"
+        android:layout_toRightOf="@id/row_movement_icon"
+        android:layout_toEndOf="@id/row_movement_icon"/>
 
     <TextView
         android:id="@+id/row_movement_kind_subkind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/text"
         android:layout_below="@id/row_movement_concept_amount"
-        android:layout_toRightOf="@id/row_movement_icon" />
+        android:layout_toRightOf="@id/row_movement_icon"
+        android:layout_toEndOf="@id/row_movement_icon"/>
 
     <TextView
         android:id="@+id/row_movement_bank_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/text"
         android:layout_below="@id/row_movement_kind_subkind"
-        android:layout_toRightOf="@id/row_movement_icon" />
+        android:layout_toRightOf="@id/row_movement_icon"
+        android:layout_toEndOf="@id/row_movement_icon"/>
 
 </RelativeLayout>
