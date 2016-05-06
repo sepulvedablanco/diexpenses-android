@@ -6,6 +6,7 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,8 +62,8 @@ public class MovementDetailsFragment extends Fragment implements DatePickerDialo
     private boolean bankAccountsLoaded = false;
 
     @Bind(R.id.movement_toggle_expense) ToggleButton etToggleExpense;
-    @Bind(R.id.movement_concept) EditText etConcept;
-    @Bind(R.id.movement_amount) EditText etAmount;
+    @Bind(R.id.movement_concept) TextInputLayout tilConcept;
+    @Bind(R.id.movement_amount) TextInputLayout tilAmount;
     @Bind(R.id.movement_kind) Spinner spinnerKind;
     @Bind(R.id.movement_subkind) Spinner spinnerSubkind;
     @Bind(R.id.movement_bank_account) Spinner spinnerBankAccount;
@@ -139,6 +140,8 @@ public class MovementDetailsFragment extends Fragment implements DatePickerDialo
 
         btnAction.setEnabled(false);
 
+        resetErrors();
+
         boolean isValidForm = checkForm();
         if (!isValidForm) {
             btnAction.setEnabled(true);
@@ -153,6 +156,16 @@ public class MovementDetailsFragment extends Fragment implements DatePickerDialo
         } catch (ParseException e) {
             Log.e(TAG, "Error getting movement:", e);
         }
+    }
+
+    private void resetErrors() {
+        resetError(tilConcept);
+        resetError(tilAmount);
+    }
+
+    private void resetError(TextInputLayout view) {
+        view.setError(null);
+        view.setErrorEnabled(false);
     }
 
     @OnClick(R.id.movement_transaction_date)
@@ -244,8 +257,8 @@ public class MovementDetailsFragment extends Fragment implements DatePickerDialo
     private Movement formToMovement() throws ParseException {
         Movement movement = new Movement();
         movement.setExpense(etToggleExpense.isChecked());
-        movement.setConcept(etConcept.getText().toString());
-        movement.setAmount(new BigDecimal(etAmount.getText().toString()));
+        movement.setConcept(tilConcept.getEditText().getText().toString());
+        movement.setAmount(new BigDecimal(tilAmount.getEditText().getText().toString()));
         movement.setKind((Kind) spinnerKind.getSelectedItem());
         movement.setSubkind((Subkind) spinnerSubkind.getSelectedItem());
         movement.setBankAccount((BankAccount) spinnerBankAccount.getSelectedItem());
@@ -260,16 +273,17 @@ public class MovementDetailsFragment extends Fragment implements DatePickerDialo
 
         boolean isValidForm = true;
 
-        isValidForm = checkRequiredField(etConcept, isValidForm);
-        isValidForm = checkRequiredField(etAmount, isValidForm);
+        isValidForm = checkRequiredField(tilConcept, isValidForm);
+        isValidForm = checkRequiredField(tilAmount, isValidForm);
 
         Log.d(TAG, methodName + "end. isValidForm=" + isValidForm);
         return isValidForm;
     }
 
-    private boolean checkRequiredField(EditText etField, boolean isValidForm) {
-        if(etField.getText().toString().isEmpty()) {
-            etField.setText(R.string.common_field_required);
+    private boolean checkRequiredField(TextInputLayout etField, boolean isValidForm) {
+        if(etField.getEditText().getText().toString().isEmpty()) {
+            etField.setError(getString(R.string.common_field_required));
+            etField.setErrorEnabled(true);
             return false;
         }
         return isValidForm;
