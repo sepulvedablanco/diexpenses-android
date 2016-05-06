@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -11,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -41,13 +41,13 @@ public class BankAccountDetailsFragment extends Fragment {
     private Long userId;
     private BankAccount bankAccount;
 
-    @Bind(R.id.bank_account_description) EditText etDescription;
-    @Bind(R.id.bank_account_iban) EditText etIban;
-    @Bind(R.id.bank_account_entity) EditText etEntity;
-    @Bind(R.id.bank_account_office) EditText etOffice;
-    @Bind(R.id.bank_account_control_digit) EditText etControlDigit;
-    @Bind(R.id.bank_account_number) EditText etAccountNumber;
-    @Bind(R.id.bank_account_balance) EditText etBalance;
+    @Bind(R.id.bank_account_description) TextInputLayout tilDescription;
+    @Bind(R.id.bank_account_iban) TextInputLayout tilIban;
+    @Bind(R.id.bank_account_entity) TextInputLayout tilEntity;
+    @Bind(R.id.bank_account_office) TextInputLayout tilOffice;
+    @Bind(R.id.bank_account_control_digit) TextInputLayout tilControlDigit;
+    @Bind(R.id.bank_account_number) TextInputLayout tilAccountNumber;
+    @Bind(R.id.bank_account_balance) TextInputLayout tilBalance;
     @Bind(R.id.bank_account_action) Button btnAction;
     @Bind(R.id.bank_account_progress_bar) ProgressBar progressBar;
 
@@ -90,18 +90,18 @@ public class BankAccountDetailsFragment extends Fragment {
         if(bankAccount == null) {
             btnAction.setText(R.string.common_create);
         } else {
-            etDescription.setText(bankAccount.getDescription());
-            etIban.setText(bankAccount.getIban());
-            etEntity.setText(bankAccount.getEntity());
-            etOffice.setText(bankAccount.getOffice());
-            etControlDigit.setText(bankAccount.getControlDigit());
-            etAccountNumber.setText(bankAccount.getAccountNumber());
-            etBalance.setText(Diexpenses.formatAmount(bankAccount.getBalance()));
+            tilDescription.getEditText().setText(bankAccount.getDescription());
+            tilIban.getEditText().setText(bankAccount.getIban());
+            tilEntity.getEditText().setText(bankAccount.getEntity());
+            tilOffice.getEditText().setText(bankAccount.getOffice());
+            tilControlDigit.getEditText().setText(bankAccount.getControlDigit());
+            tilAccountNumber.getEditText().setText(bankAccount.getAccountNumber());
+            tilBalance.getEditText().setText(Diexpenses.formatAmount(bankAccount.getBalance()));
             btnAction.setText(R.string.common_update);
         }
     }
 
-    @OnEditorAction(R.id.bank_account_balance)
+    @OnEditorAction(R.id.bank_account_balance_et)
     public boolean onEditorAction(TextView arg0, int arg1, KeyEvent arg2) {
         if(arg1 == EditorInfo.IME_ACTION_DONE) {
             onCreateOrEditBankAccount();
@@ -113,6 +113,8 @@ public class BankAccountDetailsFragment extends Fragment {
     public void onCreateOrEditBankAccount() {
 
         btnAction.setEnabled(false);
+
+        resetErrors();
 
         boolean isValidForm = checkForm();
         if(!isValidForm) {
@@ -135,16 +137,32 @@ public class BankAccountDetailsFragment extends Fragment {
         }
     }
 
+    private void resetErrors() {
+        resetError(tilDescription);
+        resetError(tilIban);
+        resetError(tilEntity);
+        resetError(tilOffice);
+        resetError(tilControlDigit);
+        resetError(tilAccountNumber);
+        resetError(tilBalance);
+    }
+
+    private void resetError(TextInputLayout view) {
+        view.setError(null);
+        view.setErrorEnabled(false);
+    }
+
+
     private BankAccount formToBankAccount() throws ParseException {
         BankAccount account = new BankAccount();
-        account.setDescription(etDescription.getText().toString());
-        String iban = etIban.getText().toString();
+        account.setDescription(tilDescription.getEditText().getText().toString());
+        String iban = tilIban.getEditText().getText().toString();
         account.setIban(iban.isEmpty() ? null : iban);
-        account.setEntity(etEntity.getText().toString());
-        account.setOffice(etOffice.getText().toString());
-        account.setControlDigit(etControlDigit.getText().toString());
-        account.setAccountNumber(etAccountNumber.getText().toString());
-        account.setBalance(Diexpenses.parseAmount(etBalance.getText().toString()));
+        account.setEntity(tilEntity.getEditText().getText().toString());
+        account.setOffice(tilOffice.getEditText().getText().toString());
+        account.setControlDigit(tilControlDigit.getEditText().getText().toString());
+        account.setAccountNumber(tilAccountNumber.getEditText().getText().toString());
+        account.setBalance(Diexpenses.parseAmount(tilBalance.getEditText().getText().toString()));
         return account;
     }
 
@@ -154,23 +172,29 @@ public class BankAccountDetailsFragment extends Fragment {
 
         boolean isValidForm = true;
 
-        isValidForm = checkRequiredField(etDescription, isValidForm);
-        isValidForm = checkRequiredField(etEntity, isValidForm);
-        isValidForm = checkRequiredField(etOffice, isValidForm);
-        isValidForm = checkRequiredField(etControlDigit, isValidForm);
-        isValidForm = checkRequiredField(etAccountNumber, isValidForm);
-        isValidForm = checkRequiredField(etBalance, isValidForm);
+        isValidForm = checkRequiredField(tilDescription, isValidForm);
+        isValidForm = checkRequiredField(tilEntity, isValidForm, 4);
+        isValidForm = checkRequiredField(tilOffice, isValidForm, 4);
+        isValidForm = checkRequiredField(tilControlDigit, isValidForm, 2);
+        isValidForm = checkRequiredField(tilAccountNumber, isValidForm, 10);
+        isValidForm = checkRequiredField(tilBalance, isValidForm);
 
         Log.d(TAG, methodName + "end. isValidForm=" + isValidForm);
         return isValidForm;
     }
 
-    private boolean checkRequiredField(EditText etField, boolean isValidForm) {
-        if(etField.getText().toString().isEmpty()) {
-            etField.setText(R.string.common_field_required);
+    private boolean checkRequiredField(TextInputLayout etField, boolean isValidForm, int length) {
+        String text = etField.getEditText().getText().toString();
+        if(text.isEmpty() || text.length() < length) {
+            etField.setError(getString(R.string.common_field_required));
+            etField.setErrorEnabled(true);
             return false;
         }
         return isValidForm;
+    }
+
+    private boolean checkRequiredField(TextInputLayout etField, boolean isValidForm) {
+        return checkRequiredField(etField, isValidForm, 0);
     }
 
     private void createBankAccount(BankAccount account) {
@@ -184,7 +208,7 @@ public class BankAccountDetailsFragment extends Fragment {
                 String methodName = "onResponse(CreateBankAccount) - ";
                 Log.d(TAG, methodName + "start");
 
-                progressBar.setVisibility(View.GONE);
+                resetCommonComponentes();
 
                 boolean isValidResponse = Requester.processResponse(response, BankAccountDetailsFragment.this);
                 if(!isValidResponse) {
@@ -204,6 +228,7 @@ public class BankAccountDetailsFragment extends Fragment {
 
             @Override
             public void onFailure(Call<GenericResponse> call, Throwable t) {
+                resetCommonComponentes();
                 Snackbar.make(getView(), R.string.bank_account_error, Snackbar.LENGTH_LONG).show();
             }
         });
@@ -221,7 +246,7 @@ public class BankAccountDetailsFragment extends Fragment {
                 String methodName = "onResponse(EditBankAccount) - ";
                 Log.d(TAG, methodName + "start");
 
-                progressBar.setVisibility(View.GONE);
+                resetCommonComponentes();
 
                 boolean isValidResponse = Requester.processResponse(response, BankAccountDetailsFragment.this);
                 if(!isValidResponse) {
@@ -234,7 +259,6 @@ public class BankAccountDetailsFragment extends Fragment {
 //                    EventBus.getDefault().post(new BankAccountCreateOrUpdate());
                     getFragmentManager().popBackStack();
                 } else {
-                    btnAction.setEnabled(true);
                     Snackbar.make(getView(), R.string.bank_account_unknow_error_updating, Snackbar.LENGTH_LONG).show();
                 }
                 Log.d(TAG, methodName + "end");
@@ -242,10 +266,15 @@ public class BankAccountDetailsFragment extends Fragment {
 
             @Override
             public void onFailure(Call<GenericResponse> call, Throwable t) {
+                resetCommonComponentes();
                 Snackbar.make(getView(), R.string.bank_account_error_updating, Snackbar.LENGTH_LONG).show();
             }
         });
         Log.d(TAG, methodName + "end");
     }
 
+    private void resetCommonComponentes() {
+        progressBar.setVisibility(View.GONE);
+        btnAction.setEnabled(true);
+    }
 }
