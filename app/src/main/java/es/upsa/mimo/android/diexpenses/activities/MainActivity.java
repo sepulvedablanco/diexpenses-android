@@ -104,9 +104,7 @@ public class MainActivity extends AppCompatActivity
         mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        Fragment homeFragment = HomeFragment.newInstance(user);
-        getFragmentManager().beginTransaction().replace(R.id.content_main, homeFragment).commit();
-
+        onNavigationItemSelected(R.id.nav_home);
     }
 
     private void checkAndSetProfileImage() {
@@ -180,8 +178,19 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
+        getFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
         int id = item.getItemId();
+
+        onNavigationItemSelected(id);
+
+        mDrawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    private void onNavigationItemSelected(int id) {
+
         if(id != R.id.nav_contact && id != R.id.nav_about) {
             navView.setCheckedItem(id);
             setTitle(navView.getMenu().findItem(id).getTitle());
@@ -209,19 +218,18 @@ public class MainActivity extends AppCompatActivity
             getFragmentManager().beginTransaction().replace(R.id.content_main, statisticsFragment).commit();
         } else if (id == R.id.nav_contact) {
             Log.d(TAG, "Contact selected");
-            Intent intent = new Intent(Intent.ACTION_SENDTO);
-            intent.setData(Uri.parse("mailto:"));
-            intent.putExtra(Intent.EXTRA_EMAIL, getString(R.string.email_to));
-            intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.email_subject));
-            startActivity(Intent.createChooser(intent, getString(R.string.send_mail)));
+            Intent intentContactActivity = new Intent(Intent.ACTION_SENDTO);
+            intentContactActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intentContactActivity.setData(Uri.parse("mailto:"));
+            intentContactActivity.putExtra(Intent.EXTRA_EMAIL, getString(R.string.email_to));
+            intentContactActivity.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.email_subject));
+            startActivity(Intent.createChooser(intentContactActivity, getString(R.string.send_mail)));
         } else if (id == R.id.nav_about) {
             Log.d(TAG, "About selected");
             Intent intentAboutActivity = new Intent(this, AboutActivity.class);
+            intentAboutActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intentAboutActivity);
         }
-
-        mDrawerLayout.closeDrawer(GravityCompat.START);
-        return true;
     }
 
     private void closeKeyboard() {
