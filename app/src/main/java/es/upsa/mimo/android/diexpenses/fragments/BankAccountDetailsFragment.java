@@ -234,6 +234,7 @@ public class BankAccountDetailsFragment extends Fragment {
 //                    EventBus.getDefault().post(new BankAccountCreateOrUpdate());
                     getFragmentManager().popBackStack();
                 } else {
+                    btnAction.setEnabled(true);
                     Snackbar.make(getView(), R.string.bank_account_unknow_error_updating, Snackbar.LENGTH_LONG).show();
                 }
                 Log.d(TAG, methodName + "end");
