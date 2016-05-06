@@ -158,6 +158,7 @@
             android:layout_height="wrap_content"
             style="@style/actionButton"
             android:layout_below="@id/movement_transacion_date_prl"
+            android:layout_marginBottom="@dimen/fab_margin"
             android:text="@string/movement_create"/>
 
         <ProgressBar

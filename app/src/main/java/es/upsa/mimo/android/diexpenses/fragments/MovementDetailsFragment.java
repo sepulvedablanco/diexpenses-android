@@ -301,6 +301,8 @@ public class MovementDetailsFragment extends Fragment implements DatePickerDialo
                 String methodName = "onResponse(CreateMovement) - ";
                 Log.d(TAG, methodName + "start");
 
+                resetCommonComponentes();
+
                 boolean isValidResponse = Requester.processResponse(response, MovementDetailsFragment.this);
                 if(!isValidResponse) {
                     return;
@@ -318,6 +320,7 @@ public class MovementDetailsFragment extends Fragment implements DatePickerDialo
 
             @Override
             public void onFailure(Call<GenericResponse> call, Throwable t) {
+                resetCommonComponentes();
                 Snackbar.make(getView(), R.string.movement_error_creating, Snackbar.LENGTH_LONG).show();
             }
         });
@@ -335,5 +338,10 @@ public class MovementDetailsFragment extends Fragment implements DatePickerDialo
         tvTransactionDate.setText(Diexpenses.formatDate(cSelected.getTime()));
 
         Log.d(TAG, methodName + "end");
+    }
+
+    private void resetCommonComponentes() {
+        progressBar.setVisibility(View.GONE);
+        btnAction.setEnabled(true);
     }
 }
