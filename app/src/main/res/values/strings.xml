@@ -142,7 +142,12 @@
     <string name="signup_password_description">The password must contain at least one digit, one uppercase and lowercase alphabets and a length of at least 6 characters.</string>
     <string name="signup_general_error">An error has occurred. Try it again later.</string>
     <string name="preferences_permission_title">Permission request</string>
-    <string name="preferences_permission_message">We are going to request permission to access your images and thus can select your profile picture. Do you agree?</string>
-    <string name="preferences_permission_alert">If you do not enable permission you can not choose your profile image.</string>
+    <string name="preferences_external_storage_permission_message">We are going to request permission to access your images and thus can select your profile picture. Do you agree?</string>
+    <string name="preferences_camera_permission_message">We are going to request permission to access your camera and thus can capture your profile picture. Do you agree?</string>
+    <string name="preferences_external_storage_permission_alert">If you do not enable external storage permission you can not choose your profile image.</string>
+    <string name="preferences_camera_permission_alert">If you do not enable camera permission you can not take your profile image.</string>
+    <string name="preference_profile_image_origin">Choose the source profile photo</string>
+    <string name="preferences_take_photo">Take a photo</string>
+    <string name="preferences_photo_from_gallery">Select photo from gallery</string>
 
 </resources>

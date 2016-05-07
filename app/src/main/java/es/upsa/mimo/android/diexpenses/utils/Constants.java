@@ -64,11 +64,11 @@ public class Constants {
 
     public class RequestCodes {
 
-        public static final int PICK_PROFILE_IMAGE = 1;
+        public static final int REQUEST_WRITE_EXTERNAL_STORAGE_PERMISSION_CODE = 1;
+        public static final int PICK_PROFILE_IMAGE = 2;
+        public static final int REQUEST_CAMERA_PERMISSION_CODE = 3;
+        public static final int OPEN_CAMERA = 4;
+
     }
 
-    public class Permissions {
-
-        public static final int REQUEST_WRITE_EXTERNAL_STORAGE_CODE = 1;
-    }
 }

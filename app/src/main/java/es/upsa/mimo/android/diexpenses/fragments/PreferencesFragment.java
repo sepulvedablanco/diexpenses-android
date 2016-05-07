@@ -70,7 +70,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements
     @Override
     public boolean onPreferenceClick(Preference preference) {
         if (getString(R.string.preferences_profile_image_key).equals(preference.getKey())) {
-            checkPermissionAndShowSelectImage();
+            openAddPhoto();
         }
 
         return true;
@@ -83,32 +83,73 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements
         startActivityForResult(Intent.createChooser(intent, getString(R.string.preferences_select_picture)), Constants.RequestCodes.PICK_PROFILE_IMAGE);
     }
 
-    private void checkPermissionAndShowSelectImage() {
+    private void showCamera() {
+        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(cameraIntent, Constants.RequestCodes.OPEN_CAMERA);
+    }
+
+    private void checkPermissionAndSelectOrTakePicture(String permission) {
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             Log.d(TAG, "Permission is granted");
-            showSelectImage();
+            selectOrTakePicture(permission);
             return;
         }
 
-        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(getActivity(), permission) == PackageManager.PERMISSION_GRANTED) {
             Log.d(TAG, "Permission is granted");
-            showSelectImage();
-        } else if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            showDialog();
+            selectOrTakePicture(permission);
+        } else if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), permission)) {
+            showDialog(permission);
         } else {
             Log.d(TAG, "Permission is revoked");
-            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, Constants.Permissions.REQUEST_WRITE_EXTERNAL_STORAGE_CODE);
+            int requestCode = getRequestCode(permission);
+            requestPermissions(new String[]{permission}, requestCode);
         }
     }
 
-    private void showDialog() {
+    private void selectOrTakePicture(String permission) {
+        switch (permission) {
+            case Manifest.permission.WRITE_EXTERNAL_STORAGE:
+                showSelectImage();
+                break;
+            case Manifest.permission.CAMERA:
+                showCamera();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private int getRequestPermissionMessage(String permission) {
+        switch (permission) {
+            case Manifest.permission.WRITE_EXTERNAL_STORAGE:
+                return R.string.preferences_external_storage_permission_message;
+            case Manifest.permission.CAMERA:
+                return R.string.preferences_camera_permission_message;
+            default:
+                return -1;
+        }
+    }
+
+    private int getRequestCode(String permission) {
+        switch (permission) {
+            case Manifest.permission.WRITE_EXTERNAL_STORAGE:
+                return Constants.RequestCodes.REQUEST_WRITE_EXTERNAL_STORAGE_PERMISSION_CODE;
+            case Manifest.permission.CAMERA:
+                return Constants.RequestCodes.REQUEST_CAMERA_PERMISSION_CODE;
+            default:
+                return -1;
+        }
+    }
+
+    private void showDialog(final String permission) {
         new AlertDialog.Builder(getActivity())
                 .setTitle(getString(R.string.preferences_permission_title))
-                .setMessage(getString(R.string.preferences_permission_message))
+                .setMessage(getString(getRequestPermissionMessage(permission)))
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, Constants.Permissions.REQUEST_WRITE_EXTERNAL_STORAGE_CODE);
+                        requestPermissions(new String[]{permission}, getRequestCode(permission));
                     }
                 })
                 .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
@@ -119,16 +160,56 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements
                 .show();
     }
 
+    private void openAddPhoto() {
+
+        String[] addPhoto = new String[]{getString(R.string.preferences_take_photo), getString(R.string.preferences_photo_from_gallery)};
+        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+        dialog.setTitle(getString(R.string.preference_profile_image_origin));
+
+        dialog.setItems(addPhoto, new DialogInterface.OnClickListener(){
+
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                if(id == 0) {
+                    checkPermissionAndSelectOrTakePicture(Manifest.permission.CAMERA);
+                } else if (id == 1) {
+                    checkPermissionAndSelectOrTakePicture(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                }
+            }
+        });
+
+        dialog.setNeutralButton(android.R.string.no, new android.content.DialogInterface.OnClickListener(){
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // do nothing
+            }
+        });
+
+        dialog.show();
+    }
+
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode == Constants.Permissions.REQUEST_WRITE_EXTERNAL_STORAGE_CODE && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            Log.d(TAG, "Permission: " + permissions[0] + " was " + grantResults[0]);
-            showSelectImage();
-        } else {
-            Log.e(TAG, "Permission not granted.");
-            Snackbar.make(getView(), R.string.preferences_permission_alert, Snackbar.LENGTH_LONG).show();
+        if (requestCode == Constants.RequestCodes.REQUEST_WRITE_EXTERNAL_STORAGE_PERMISSION_CODE)
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.d(TAG, "Write external storage permission: " + permissions[0] + " was " + grantResults[0]);
+                showSelectImage();
+            } else {
+                Log.e(TAG, "Write external storage permission not granted.");
+                Snackbar.make(getView(), R.string.preferences_external_storage_permission_alert, Snackbar.LENGTH_LONG).show();
+            }
+        else if (requestCode == Constants.RequestCodes.REQUEST_CAMERA_PERMISSION_CODE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.d(TAG, "Camera permission: " + permissions[0] + " was " + grantResults[0]);
+                showCamera();
+            } else {
+                Log.e(TAG, "Camera permission not granted.");
+                Snackbar.make(getView(), R.string.preferences_camera_permission_alert, Snackbar.LENGTH_LONG).show();
+            }
         }
     }
 
@@ -145,22 +226,33 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements
             try {
                 InputStream imageStream = getActivity().getContentResolver().openInputStream(selectedImage);
                 Bitmap imageProfile = BitmapFactory.decodeStream(imageStream);
-                String diexpensesFolder = Diexpenses.getAppFolder(getActivity());
-
-                File file = new File(diexpensesFolder, Constants.Preferences.PROFILE_IMAGE_NAME);
-                OutputStream fOut = new FileOutputStream(file);
-
-                imageProfile.compress(Bitmap.CompressFormat.PNG, 100, fOut);
-                fOut.flush();
-                fOut.close();
-
-                MediaStore.Images.Media.insertImage(getActivity().getContentResolver(), file.getAbsolutePath(), file.getName(), file.getName());
-
-                EventBus.getDefault().post(new ProfileImageChanged(imageProfile));
-
+                saveImage(imageProfile);
             } catch (Exception e) {
-                Log.e(TAG, "Error while processing profile image", e);
+                Log.e(TAG, "Error while opening profile image", e);
             }
+        } else if (requestCode == Constants.RequestCodes.OPEN_CAMERA) {
+            Bitmap imageProfile = (Bitmap) data.getExtras().get("data");
+            saveImage(imageProfile);
         }
+    }
+
+    private void saveImage(Bitmap bmImageProfile) {
+        try {
+            String diexpensesFolder = Diexpenses.getAppFolder(getActivity());
+
+            File file = new File(diexpensesFolder, Constants.Preferences.PROFILE_IMAGE_NAME);
+            OutputStream fOut = new FileOutputStream(file);
+
+            bmImageProfile.compress(Bitmap.CompressFormat.PNG, 100, fOut);
+            fOut.flush();
+            fOut.close();
+
+            MediaStore.Images.Media.insertImage(getActivity().getContentResolver(), file.getAbsolutePath(), file.getName(), file.getName());
+
+            EventBus.getDefault().post(new ProfileImageChanged(bmImageProfile));
+        } catch (Exception e) {
+            Log.e(TAG, "Error while processing profile image", e);
+        }
+
     }
 }
