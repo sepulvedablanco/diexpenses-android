@@ -51,9 +51,6 @@ public class MainActivity extends AppCompatActivity
 
     @Bind(R.id.main_drawer_layout) DrawerLayout mDrawerLayout;
     @Bind(R.id.main_nav_view) NavigationView navView;
-//    @Bind(R.id.imageView) ImageView ivProfileImage;
-//    @Bind(R.id.drawer_name) TextView tvName;
-//    @Bind(R.id.drawer_user) TextView tvUser;
     private ImageView ivProfileImage;
 
     @Override
