@@ -21,6 +21,7 @@
     <string name="common_edit">Edit</string>
     <string name="common_accept">Accept</string>
     <string name="common_field_required">Field required</string>
+    <string name="common_numeric_field_required_with_lenght">This field must contain %1$s digits</string>
     <string name="common_unknown_error">An unknown error has occurred</string>
 
     <string name="sign_up">Sign Up</string>

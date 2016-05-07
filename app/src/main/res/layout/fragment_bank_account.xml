@@ -1,151 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".activities.MainActivity" >
 
-    <RelativeLayout
-        android:layout_margin="@dimen/fab_margin"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/bank_account_description"
+        <RelativeLayout
+            android:layout_margin="@dimen/fab_margin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/bank_account_description"
-            android:imeOptions="actionNext"
-            android:maxLines="1"
-            android:singleLine="true" />
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/bank_account_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
 
-        </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/bank_account_description"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:singleLine="true" />
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/bank_account_iban"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/bank_account_description" >
+            </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputEditText
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/bank_account_iban"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/bank_account_iban"
-                android:imeOptions="actionNext"
-                android:maxLength="4"
-                android:maxLines="1"
-                android:singleLine="true" />
+                android:layout_below="@id/bank_account_description" >
 
-        </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/bank_account_iban"
+                    android:imeOptions="actionNext"
+                    android:maxLength="4"
+                    android:maxLines="1"
+                    android:singleLine="true" />
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/bank_account_entity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/bank_account_iban" >
+            </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputEditText
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/bank_account_entity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/bank_account_entity"
-                android:imeOptions="actionNext"
-                android:maxLength="4"
-                android:inputType="number"
-                android:maxLines="1"
-                android:singleLine="true" />
+                android:layout_below="@id/bank_account_iban" >
 
-        </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/bank_account_entity"
+                    android:imeOptions="actionNext"
+                    android:maxLength="4"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:singleLine="true" />
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/bank_account_office"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/bank_account_entity" >
+            </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputEditText
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/bank_account_office"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/bank_account_office"
-                android:imeOptions="actionNext"
-                android:maxLength="4"
-                android:inputType="number"
-                android:maxLines="1"
-                android:singleLine="true" />
+                android:layout_below="@id/bank_account_entity" >
 
-        </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/bank_account_office"
+                    android:imeOptions="actionNext"
+                    android:maxLength="4"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:singleLine="true" />
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/bank_account_control_digit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/bank_account_office" >
+            </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputEditText
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/bank_account_control_digit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/bank_account_control_digit"
-                android:imeOptions="actionNext"
-                android:maxLength="2"
-                android:inputType="number"
-                android:maxLines="1"
-                android:singleLine="true" />
+                android:layout_below="@id/bank_account_office" >
 
-        </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/bank_account_control_digit"
+                    android:imeOptions="actionNext"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:singleLine="true" />
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/bank_account_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/bank_account_control_digit" >
+            </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputEditText
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/bank_account_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/bank_account_number"
-                android:imeOptions="actionNext"
-                android:maxLength="10"
-                android:inputType="number"
-                android:maxLines="1"
-                android:singleLine="true" />
+                android:layout_below="@id/bank_account_control_digit" >
 
-        </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/bank_account_number"
+                    android:imeOptions="actionNext"
+                    android:maxLength="10"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:singleLine="true" />
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/bank_account_balance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/bank_account_number" >
+            </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/bank_account_balance_et"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/bank_account_balance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/bank_account_balance"
-                android:imeOptions="actionNext"
-                android:inputType="numberDecimal"
-                android:maxLines="1"
-                android:singleLine="true" />
+                android:layout_below="@id/bank_account_number" >
 
-        </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/bank_account_balance_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/bank_account_balance"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLines="1"
+                    android:singleLine="true" />
 
-        <Button
-            android:id="@+id/bank_account_action"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/actionButton"
-            android:layout_marginBottom="@dimen/fab_margin"
-            android:layout_below="@id/bank_account_balance"
-            android:text="@string/bank_account_save"/>
+            </android.support.design.widget.TextInputLayout>
 
-        <ProgressBar
-            android:id="@+id/bank_account_progress_bar"
-            style="@style/progress_bar_center_hide"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/bank_account_action"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/actionButton"
+                android:layout_marginBottom="@dimen/fab_margin"
+                android:layout_below="@id/bank_account_balance"
+                android:text="@string/bank_account_save"/>
 
-    </RelativeLayout>
+        </RelativeLayout>
 
-</ScrollView>
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/bank_account_progress_bar"
+        style="@style/progress_bar_center_hide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

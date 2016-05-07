@@ -183,14 +183,21 @@ public class BankAccountDetailsFragment extends Fragment {
         return isValidForm;
     }
 
-    private boolean checkRequiredField(TextInputLayout etField, boolean isValidForm, int length) {
-        String text = etField.getEditText().getText().toString();
-        if(text.isEmpty() || text.length() < length) {
-            etField.setError(getString(R.string.common_field_required));
-            etField.setErrorEnabled(true);
+    private boolean checkRequiredField(TextInputLayout tilField, boolean isValidForm, int length) {
+        String text = tilField.getEditText().getText().toString();
+        if(text.isEmpty()) {
+            setErrorInField(tilField, getString(R.string.common_field_required));
+            return false;
+        } else if (text.length() < length) {
+            setErrorInField(tilField, getString(R.string.common_numeric_field_required_with_lenght, length));
             return false;
         }
         return isValidForm;
+    }
+
+    private void setErrorInField(TextInputLayout tilField, String strError) {
+        tilField.setError(strError);
+        tilField.setErrorEnabled(true);
     }
 
     private boolean checkRequiredField(TextInputLayout etField, boolean isValidForm) {

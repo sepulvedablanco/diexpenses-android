@@ -21,6 +21,7 @@
     <string name="common_edit">Editar</string>
     <string name="common_accept">Aceptar</string>
     <string name="common_field_required">Campo obligatorio</string>
+    <string name="common_numeric_field_required_with_lenght">Este campo debe contener %1$s dígitos</string>
     <string name="common_unknown_error">Ha ocurrido un error desconocido</string>
 
     <string name="sign_up">Sign Up</string>
