@@ -137,5 +137,8 @@
     <string name="statistics_all_subkinds">Todos los subtipos</string>
     <string name="statistics_all_bank_accounts">Todas las cuentas</string>
     <string name="statistics_no_data">No se han recuperado datos</string>
+    <string name="signup_fail_creating_user">El usuario ya existe o la contraseña no es válida.</string>
+    <string name="signup_password_description">La contraseña debe contener al menus un dígito, una letra mayúscula y minúscula y una longitud de al menos 6 caracteres.</string>
+    <string name="signup_general_error">Ha ocurrido un error. Inténtelo de nuevo más tarde.</string>
 
 </resources>

@@ -1,103 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.percent.PercentRelativeLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/fab_margin"
-    tools:context=".activities.SignupActivity">
+    tools:context=".activities.SignupActivity" >
 
-    <TextView
-        android:id="@+id/signup_title"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/title"
-        android:text="@string/sign_up"
-        app:layout_heightPercent="20%" />
+        android:layout_height="match_parent" >
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/signup_name"
-        android:layout_below="@id/signup_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <android.support.design.widget.TextInputEditText
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/name"
-            android:inputType="textPersonName"
-            android:maxLines="1"
-            android:singleLine="true" />
+            android:layout_height="match_parent"
+            android:padding="@dimen/activity_vertical_margin" >
+            android:padding="@dimen/fab_margin" >
 
-    </android.support.design.widget.TextInputLayout>
+            <TextView
+                android:id="@+id/signup_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/title"
+                android:text="@string/sign_up" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/signup_user"
-        android:layout_below="@+id/signup_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/signup_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/signup_title" >
 
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/user"
-            android:inputType="textAutoComplete"
-            android:maxLines="1"
-            android:singleLine="true" />
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/name"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    android:singleLine="true" />
 
-    </android.support.design.widget.TextInputLayout>
+            </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/signup_password"
-        android:layout_below="@+id/signup_user"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/signup_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/signup_name" >
 
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:singleLine="true" />
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/user"
+                    android:inputType="textAutoComplete"
+                    android:maxLines="1"
+                    android:singleLine="true" />
 
-    </android.support.design.widget.TextInputLayout>
+            </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/signup_confirm_password"
-        android:layout_below="@+id/signup_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/signup_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/signup_user" >
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/signup_confirm_passwordET"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/confirm_password"
-            android:imeOptions="actionDone"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:singleLine="true" />
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true" />
 
-    </android.support.design.widget.TextInputLayout>
+            </android.support.design.widget.TextInputLayout>
 
-    <Button
-        android:id="@+id/signup_action"
-        android:layout_below="@+id/signup_confirm_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/actionButton"
-        android:text="@string/sign_up" />
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/signup_confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/signup_password" >
 
-    <TextView
-        android:id="@+id/signup_login_now"
-        android:layout_below="@+id/signup_action"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/link"
-        android:clickable="true"
-        android:text="@string/have_account_question" />
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/signup_confirm_passwordET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/confirm_password"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/signup_action"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/signup_confirm_password"
+                style="@style/actionButton"
+                android:text="@string/sign_up" />
+
+            <TextView
+                android:id="@+id/signup_login_now"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/signup_action"
+                style="@style/link"
+                android:clickable="true"
+                android:text="@string/have_account_question" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
     <ProgressBar
         android:id="@+id/signup_progress_bar"
@@ -105,4 +116,4 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-</android.support.percent.PercentRelativeLayout>
+</RelativeLayout>

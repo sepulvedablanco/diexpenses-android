@@ -71,7 +71,7 @@ public class SignupActivity extends AppCompatActivity {
         String password = tilPassword.getEditText().getText().toString();
         String confirmPassword = tilConfirmPassword.getEditText().getText().toString();
 
-        boolean valid = checkForm(name, user, password, confirmPassword);
+        boolean valid = checkForm(password, confirmPassword);
         if(!valid) {
             btnSignup.setEnabled(true);
             Log.i(TAG, "Invalid data");
@@ -105,36 +105,40 @@ public class SignupActivity extends AppCompatActivity {
         tilConfirmPassword.setErrorEnabled(false);
     }
 
-    private boolean checkForm(String name, String user, String password, String confirmPassword) {
+    private boolean checkForm(String password, String confirmPassword) {
         Log.d(TAG, "onLogin - start");
         boolean valid = true;
-        if(name == null || name.isEmpty()) {
-            tilName.setError(getString(R.string.common_field_required));
-            tilName.setErrorEnabled(true);
-            valid = false;
-        }
-        if(user == null || user.isEmpty()) {
-            tilUser.setError(getString(R.string.common_field_required));
-            tilUser.setErrorEnabled(true);
-            valid = false;
-        }
-        if(password == null || password.isEmpty()) {
-            tilPassword.setError(getString(R.string.common_field_required));
-            tilPassword.setErrorEnabled(true);
-            valid = false;
-        }
-        if(confirmPassword == null || confirmPassword.isEmpty()) {
-            tilConfirmPassword.setError(getString(R.string.common_field_required));
-            tilConfirmPassword.setErrorEnabled(true);
-            valid = false;
-        }
+
+        valid = checkRequiredField(tilName, valid);
+        valid = checkRequiredField(tilUser, valid);
+        valid = checkRequiredField(tilPassword, valid);
+        valid = checkRequiredField(tilConfirmPassword, valid);
+
         if(password != null && !password.equals(confirmPassword)) {
             tilConfirmPassword.setError(getString(R.string.different_passwords));
             tilConfirmPassword.setErrorEnabled(true);
             valid = false;
         }
+
+        final String passwordPattern = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})";
+        if (!password.matches(passwordPattern)) {
+            tilPassword.setError(getString(R.string.signup_password_description));
+            tilPassword.setErrorEnabled(true);
+            valid = false;
+        }
+
         Log.d(TAG, "onLogin - valid=" + valid + " - end");
         return valid;
+    }
+
+    private boolean checkRequiredField(TextInputLayout etField, boolean isValidForm) {
+        String text = etField.getEditText().getText().toString();
+        if(text.isEmpty()) {
+            etField.setError(getString(R.string.common_field_required));
+            etField.setErrorEnabled(true);
+            return false;
+        }
+        return isValidForm;
     }
 
     private void createUser(final NewUser newUser) {
@@ -142,9 +146,12 @@ public class SignupActivity extends AppCompatActivity {
         call.enqueue(new Callback<GenericResponse>() {
             @Override
             public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
+
+                resetCommonComponentes();
+
                 GenericResponse genericResponse = response.body();
                 if (genericResponse == null) {
-
+                    Snackbar.make(tilConfirmPassword, R.string.signup_fail_creating_user, Snackbar.LENGTH_LONG).show();
                     return;
                 }
 
@@ -174,7 +181,7 @@ public class SignupActivity extends AppCompatActivity {
 
                 User user = response.body();
                 if(user == null) {
-
+                    Snackbar.make(tilConfirmPassword, R.string.signup_general_error, Snackbar.LENGTH_LONG).show();
                     return;
                 }
 
@@ -202,5 +209,8 @@ public class SignupActivity extends AppCompatActivity {
         Log.d(TAG, methodName + "end");
     }
 
-
+    private void resetCommonComponentes() {
+        progressBar.setVisibility(View.GONE);
+        btnSignup.setEnabled(true);
+    }
 }

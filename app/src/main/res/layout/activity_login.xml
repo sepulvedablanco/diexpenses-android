@@ -1,77 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.percent.PercentRelativeLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/activity_vertical_margin"
-    tools:context=".activities.LoginActivity">
+    tools:context=".activities.LoginActivity" >
 
-    <TextView
-        android:id="@+id/login_title"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/title"
-        android:text="@string/diexpenses"
-        app:layout_heightPercent="30%" />
+        android:layout_height="match_parent" >
 
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/signup_user"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/login_title">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/login_userET"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/user"
-            android:inputType="textAutoComplete"
-            android:maxLines="1"
-            android:singleLine="true" />
+            android:layout_height="match_parent"
+            android:padding="@dimen/activity_vertical_margin" >
 
-    </android.support.design.widget.TextInputLayout>
+            <TextView
+                android:id="@+id/login_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/title"
+                android:text="@string/diexpenses" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/signup_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/signup_user">
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/signup_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/login_title">
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/login_passwordET"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/password"
-            android:imeOptions="actionDone"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:singleLine="true" />
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/login_userET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/user"
+                    android:inputType="textAutoComplete"
+                    android:maxLines="1"
+                    android:singleLine="true" />
 
-    </android.support.design.widget.TextInputLayout>
+            </android.support.design.widget.TextInputLayout>
 
-    <Button
-        android:id="@+id/login_signIn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/actionButton"
-        android:layout_below="@id/signup_password"
-        android:text="@string/sign_in" />
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/signup_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/signup_user">
 
-    <TextView
-        android:id="@+id/login_signup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/login_signIn"
-        style="@style/link"
-        android:clickable="true"
-        android:text="@string/register_question" />
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/login_passwordET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/login_signIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/actionButton"
+                android:layout_below="@id/signup_password"
+                android:text="@string/sign_in" />
+
+            <TextView
+                android:id="@+id/login_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/login_signIn"
+                style="@style/link"
+                android:clickable="true"
+                android:text="@string/register_question" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
     <ProgressBar
         android:id="@+id/login_progress_bar"
         style="@style/progress_bar_center_hide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-</android.support.percent.PercentRelativeLayout>
+
+</RelativeLayout>

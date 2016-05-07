@@ -61,7 +61,6 @@ public class LoginActivity extends AppCompatActivity {
 
         resetErrors();
 
-        // Store values at the time of the login attempt.
         String user = tilUser.getEditText().getText().toString();
         String password = tilPassword.getEditText().getText().toString();
 
@@ -83,13 +82,13 @@ public class LoginActivity extends AppCompatActivity {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                progressBar.setVisibility(View.GONE);
+
+                resetCommonComponentes();
 
                 User user = response.body();
                 if (user != null) {
                     toHomeScreen(user);
                 } else {
-                    btnLogin.setEnabled(true);
                     tilPassword.setError(getString(R.string.error_incorrect_password));
                     tilPassword.requestFocus();
                 }
@@ -144,5 +143,10 @@ public class LoginActivity extends AppCompatActivity {
         Intent intentSignupActivity = new Intent(this, SignupActivity.class);
         intentSignupActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intentSignupActivity);
+    }
+
+    private void resetCommonComponentes() {
+        progressBar.setVisibility(View.GONE);
+        btnLogin.setEnabled(true);
     }
 }
