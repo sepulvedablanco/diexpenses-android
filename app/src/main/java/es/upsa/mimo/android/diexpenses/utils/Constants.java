@@ -61,4 +61,14 @@ public class Constants {
 
         public static final String PROFILE_IMAGE_NAME = "ProfileImage";
     }
+
+    public class RequestCodes {
+
+        public static final int PICK_PROFILE_IMAGE = 1;
+    }
+
+    public class Permissions {
+
+        public static final int REQUEST_WRITE_EXTERNAL_STORAGE_CODE = 1;
+    }
 }

@@ -141,5 +141,8 @@
     <string name="signup_fail_creating_user">El usuario ya existe o la contraseña no es válida.</string>
     <string name="signup_password_description">La contraseña debe contener al menus un dígito, una letra mayúscula y minúscula y una longitud de al menos 6 caracteres.</string>
     <string name="signup_general_error">Ha ocurrido un error. Inténtelo de nuevo más tarde.</string>
+    <string name="preferences_permission_title">Solicitud de permiso</string>
+    <string name="preferences_permission_message">A continuación se le va a solicitar permiso para acceder a sus imágenes y que así pueda seleccionar su imagen de perfil. ¿Está de acuerdo?</string>
+    <string name="preferences_permission_alert">Si no habilitas el permiso no podrás elegir tu imagen de perfil.</string>
 
 </resources>

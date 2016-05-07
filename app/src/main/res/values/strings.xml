@@ -141,5 +141,8 @@
     <string name="signup_fail_creating_user">User already exist or the password is invalid.</string>
     <string name="signup_password_description">The password must contain at least one digit, one uppercase and lowercase alphabets and a length of at least 6 characters.</string>
     <string name="signup_general_error">An error has occurred. Try it again later.</string>
+    <string name="preferences_permission_title">Permission request</string>
+    <string name="preferences_permission_message">We are going to request permission to access your images and thus can select your profile picture. Do you agree?</string>
+    <string name="preferences_permission_alert">If you do not enable permission you can not choose your profile image.</string>
 
 </resources>
