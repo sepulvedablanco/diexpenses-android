@@ -23,6 +23,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 import es.upsa.mimo.android.diexpenses.R;
 import es.upsa.mimo.android.diexpenses.models.User;
@@ -105,6 +106,19 @@ public class Diexpenses {
         String amountFormatted = currencyFormatter.format(amount);
         Log.d(TAG, methodName + "end. Amount formatted=" + amountFormatted);
         return amountFormatted;
+    }
+
+    public static String formatAmountWithoutGroupingSeparator(BigDecimal amount) {
+        String methodName = "formatAmountWithoutGroupingSeparator - ";
+        Log.d(TAG, methodName + "start. Amount=" + amount);
+        String strAmount = formatAmount(amount);
+        Log.d(TAG, methodName + "formatAmount=" + strAmount);
+        DecimalFormatSymbols symbols = decimalFormatWithLocale.getDecimalFormatSymbols();
+        String groupingSeparator = Character.toString(symbols.getGroupingSeparator());
+        Log.d(TAG, methodName + "groupingSeparator=" + groupingSeparator);
+        String strFormatted = strAmount.replace(groupingSeparator, "");
+        Log.d(TAG, methodName + "strFormatted=" + strFormatted);
+        return strFormatted;
     }
 
     public static String formatDate(Date date) {

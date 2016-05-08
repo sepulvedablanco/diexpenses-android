@@ -30,7 +30,7 @@ public class NumericFilter implements InputFilter {
             String resultingText = destText.substring(0, dstart)
                     + source.subSequence(start, end)
                     + destText.substring(dend);
-            if (!resultingText.matches("^\\d+(\\.\\d{1,2})?$")) {
+            if (!resultingText.matches("^\\d+([.,]\\d{1,2})?$")) {
                 return "";
             }
         }

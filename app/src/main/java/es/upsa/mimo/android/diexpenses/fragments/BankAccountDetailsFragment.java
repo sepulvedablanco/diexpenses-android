@@ -111,7 +111,7 @@ public class BankAccountDetailsFragment extends Fragment {
         tilOffice.getEditText().setText(bankAccount.getOffice());
         tilControlDigit.getEditText().setText(bankAccount.getControlDigit());
         tilAccountNumber.getEditText().setText(bankAccount.getAccountNumber());
-        tilBalance.getEditText().setText(Diexpenses.formatAmount(bankAccount.getBalance()));
+        tilBalance.getEditText().setText(Diexpenses.formatAmountWithoutGroupingSeparator(bankAccount.getBalance()));
     }
 
     private void configActionButton(@StringRes int titleId) {
