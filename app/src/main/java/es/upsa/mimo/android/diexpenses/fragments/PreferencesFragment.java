@@ -11,10 +11,11 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.util.Log;
@@ -27,6 +28,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import es.upsa.mimo.android.diexpenses.R;
+import es.upsa.mimo.android.diexpenses.dialogs.ExplainPermissionDialogFragment;
+import es.upsa.mimo.android.diexpenses.dialogs.ItemsDialogFragment;
 import es.upsa.mimo.android.diexpenses.events.CurrencyChanged;
 import es.upsa.mimo.android.diexpenses.events.ProfileImageChanged;
 import es.upsa.mimo.android.diexpenses.utils.Constants;
@@ -36,7 +39,9 @@ import es.upsa.mimo.android.diexpenses.utils.Diexpenses;
  * Created by Diego on 24/4/16.
  */
 public class PreferencesFragment extends PreferenceFragmentCompat implements
-        Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
+        Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener,
+        ExplainPermissionDialogFragment.ExplainPermissionDialogListener,
+        DialogInterface.OnClickListener {
 
     private static final String TAG = PreferencesFragment.class.getSimpleName();
 
@@ -121,7 +126,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements
         }
     }
 
-    private int getRequestPermissionMessage(String permission) {
+    private @StringRes int getRequestPermissionMessage(String permission) {
         switch (permission) {
             case Manifest.permission.WRITE_EXTERNAL_STORAGE:
                 return R.string.preferences_external_storage_permission_message;
@@ -144,51 +149,26 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements
     }
 
     private void showDialog(final String permission) {
-        new AlertDialog.Builder(getActivity())
-                .setTitle(getString(R.string.preferences_permission_title))
-                .setMessage(getString(getRequestPermissionMessage(permission)))
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        requestPermissions(new String[]{permission}, getRequestCode(permission));
-                    }
-                })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // do nothing
-                    }
-                })
-                .show();
+        final String tag = "PermissionDialogFragment";
+        Diexpenses.checkDialog(getFragmentManager(), tag);
+        DialogFragment permissionDialog = ExplainPermissionDialogFragment.newInstance(
+                PreferencesFragment.this,
+                R.string.preferences_permission_title,
+                getRequestPermissionMessage(permission),
+                permission);
+        permissionDialog.show(getFragmentManager(), tag);
     }
 
     private void openAddPhoto() {
 
         String[] addPhoto = new String[]{getString(R.string.preferences_take_photo), getString(R.string.preferences_photo_from_gallery)};
-        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
-        dialog.setTitle(getString(R.string.preference_profile_image_origin));
 
-        dialog.setItems(addPhoto, new DialogInterface.OnClickListener(){
-
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                if(id == 0) {
-                    checkPermissionAndSelectOrTakePicture(Manifest.permission.CAMERA);
-                } else if (id == 1) {
-                    checkPermissionAndSelectOrTakePicture(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-                }
-            }
-        });
-
-        dialog.setNeutralButton(android.R.string.no, new android.content.DialogInterface.OnClickListener(){
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // do nothing
-            }
-        });
-
-        dialog.show();
+        final String tag = "ItemsDialogFragment";
+        Diexpenses.checkDialog(getFragmentManager(), tag);
+        DialogFragment dialogFragment = ItemsDialogFragment.newInstance(
+                R.string.preference_profile_image_origin, addPhoto, PreferencesFragment.this);
+        dialogFragment.show(getFragmentManager(), tag);
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -254,5 +234,24 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements
             Log.e(TAG, "Error while processing profile image", e);
         }
 
+    }
+
+    @Override
+    public void onOK(String permission) {
+        requestPermissions(new String[]{permission}, getRequestCode(permission));
+    }
+
+    @Override
+    public void onKO() {
+        // do nothing
+    }
+
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+        if(which == 0) {
+            checkPermissionAndSelectOrTakePicture(Manifest.permission.CAMERA);
+        } else if (which == 1) {
+            checkPermissionAndSelectOrTakePicture(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
     }
 }

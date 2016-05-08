@@ -1,14 +1,11 @@
 package es.upsa.mimo.android.diexpenses.fragments;
 
+import android.app.DialogFragment;
 import android.app.Fragment;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +31,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import es.upsa.mimo.android.diexpenses.R;
 import es.upsa.mimo.android.diexpenses.api.Requester;
+import es.upsa.mimo.android.diexpenses.dialogs.RateDialogFragment;
 import es.upsa.mimo.android.diexpenses.events.CurrencyChanged;
 import es.upsa.mimo.android.diexpenses.models.User;
 import es.upsa.mimo.android.diexpenses.utils.Constants;
@@ -329,28 +327,9 @@ public class HomeFragment extends Fragment {
     }
 
     private void showRateAppAlert() {
-        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-        alert.setTitle(getString(R.string.rate_title));
-        alert.setIcon(R.mipmap.ic_launcher);
-        alert.setMessage(getString(R.string.rate_message));
-
-        alert.setPositiveButton(getString(R.string.rate_button), new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(getString(R.string.protocol_market, getActivity().getPackageName())));
-                if (intent.resolveActivity(getActivity().getPackageManager()) == null) {
-                    intent.setData(Uri.parse(getString(R.string.protocol_market_url, getActivity().getPackageName())));
-                }
-                startActivity(intent);
-            }
-        });
-
-        alert.setNegativeButton(getString(R.string.common_cancel), new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                //Do nothing
-            }
-        });
-        alert.show();
+        final String tag = "RateDialogFragment";
+        Diexpenses.checkDialog(getFragmentManager(), tag);
+        DialogFragment fragment = RateDialogFragment.newInstance();
+        fragment.show(getFragmentManager(), tag);
     }
-
 }

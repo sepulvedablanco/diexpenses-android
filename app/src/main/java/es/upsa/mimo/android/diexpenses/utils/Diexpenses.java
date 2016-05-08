@@ -81,6 +81,15 @@ public class Diexpenses {
         editor.commit();
     }
 
+    public static void checkDialog(android.support.v4.app.FragmentManager fragmentManager, String tag) {
+        android.support.v4.app.FragmentTransaction ft = fragmentManager.beginTransaction();
+        android.support.v4.app.Fragment prev = fragmentManager.findFragmentByTag(tag);
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+    }
+
     public static void checkDialog(FragmentManager fragmentManager, String tag) {
         FragmentTransaction ft = fragmentManager.beginTransaction();
         Fragment prev = fragmentManager.findFragmentByTag(tag);
@@ -172,6 +181,16 @@ public class Diexpenses {
         return hasRated;
     }
 
+    public static void updateHasRated(Context context) {
+        String methodName = "updateHasRated - ";
+        Log.d(TAG, methodName + "start.");
+        SharedPreferences sharedPreferences = context.getSharedPreferences(Constants.SharedPreferences.NAME, Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor= sharedPreferences.edit();
+        editor.putBoolean(Constants.SharedPreferences.Parameters.Rate.HAS_RATE, true);
+        editor.commit();
+        Log.d(TAG, methodName + "end.");
+    }
+
     public static String getAppFolder(final Context context) throws Exception {
         return context.getPackageManager().getPackageInfo(context.getPackageName(), 0).applicationInfo.dataDir;
     }
@@ -207,4 +226,5 @@ public class Diexpenses {
         DecimalFormatSymbols symbols = decimalFormatWithLocale.getDecimalFormatSymbols();
         return symbols.getDecimalSeparator();
     }
+
 }
