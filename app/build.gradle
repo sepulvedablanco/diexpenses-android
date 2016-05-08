@@ -7,7 +7,6 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 1
         applicationId "es.upsa.mimo.android.diexpenses"
     }
     buildTypes {
@@ -18,12 +17,13 @@ android {
     }
     productFlavors {
         pro {
+            versionCode 2
             versionName "1.0"
         }
         free {
             applicationIdSuffix = "free"
-//            applicationId = "es.upsa.mimo.android.diexpenses.free"
-            versionName "1.0-free"
+            versionCode 2
+            versionName "1.1-free"
         }
     }
 
