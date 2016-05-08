@@ -216,7 +216,6 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_contact) {
             Log.d(TAG, "Contact selected");
             Intent intentContactActivity = new Intent(Intent.ACTION_SENDTO);
-            intentContactActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             intentContactActivity.setData(Uri.parse("mailto:"));
             intentContactActivity.putExtra(Intent.EXTRA_EMAIL, getString(R.string.email_to));
             intentContactActivity.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.email_subject));
@@ -224,7 +223,6 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_about) {
             Log.d(TAG, "About selected");
             Intent intentAboutActivity = new Intent(this, AboutActivity.class);
-            intentAboutActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intentAboutActivity);
         }
     }
