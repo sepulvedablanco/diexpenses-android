@@ -7,13 +7,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
+import android.text.InputFilter;
+import android.text.method.DigitsKeyListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -44,6 +45,7 @@ import es.upsa.mimo.android.diexpenses.models.Movement;
 import es.upsa.mimo.android.diexpenses.models.Subkind;
 import es.upsa.mimo.android.diexpenses.utils.Constants;
 import es.upsa.mimo.android.diexpenses.utils.Diexpenses;
+import es.upsa.mimo.android.diexpenses.utils.NumericFilter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -96,6 +98,8 @@ public class MovementDetailsFragment extends Fragment implements DatePickerDialo
 
             ButterKnife.bind(this, getView());
 
+            configAmountField();
+
             etToggleExpense.setChecked(true);
             tvTransactionDate.setText(Diexpenses.formatDate(new Date()));
 
@@ -105,6 +109,15 @@ public class MovementDetailsFragment extends Fragment implements DatePickerDialo
             loadBankAccounts();
         }
     }
+
+    private void configAmountField() {
+        String allowedCharacteres = "0123456789" + Diexpenses.getDecimalSeparator();
+        tilAmount.getEditText().setKeyListener(DigitsKeyListener.getInstance(allowedCharacteres));
+        InputFilter[] filter = new InputFilter[1];
+        filter[0] = new NumericFilter();
+        tilAmount.getEditText().setFilters(filter);
+    }
+
 
     private void loadKinds() {
         Call<List<Kind>> kindsCall = Requester.getInstance().getExpensesApi().getKinds(userId);
@@ -152,10 +165,22 @@ public class MovementDetailsFragment extends Fragment implements DatePickerDialo
 
         try {
             Movement movement = formToMovement();
-            createMovement(movement);
+            if(BigDecimal.ZERO.equals(movement.getAmount())) {
+                setErrorInField(tilAmount, getString(R.string.movement_invalid_amount));
+                resetCommonComponentes();
+            } else {
+                createMovement(movement);
+            }
         } catch (ParseException e) {
-            Log.e(TAG, "Error getting movement:", e);
+            Log.e(TAG, "Invalid amount: " + tilAmount.getEditText().getText().toString());
+            setErrorInField(tilAmount, getString(R.string.common_invalid_amount));
+            resetCommonComponentes();
         }
+    }
+
+    private void setErrorInField(TextInputLayout tilField, String strError) {
+        tilField.setError(strError);
+        tilField.setErrorEnabled(true);
     }
 
     private void resetErrors() {
@@ -258,7 +283,7 @@ public class MovementDetailsFragment extends Fragment implements DatePickerDialo
         Movement movement = new Movement();
         movement.setExpense(etToggleExpense.isChecked());
         movement.setConcept(tilConcept.getEditText().getText().toString());
-        movement.setAmount(new BigDecimal(tilAmount.getEditText().getText().toString()));
+        movement.setAmount(Diexpenses.parseAmount(tilAmount.getEditText().getText().toString()));
         movement.setKind((Kind) spinnerKind.getSelectedItem());
         movement.setSubkind((Subkind) spinnerSubkind.getSelectedItem());
         movement.setBankAccount((BankAccount) spinnerBankAccount.getSelectedItem());

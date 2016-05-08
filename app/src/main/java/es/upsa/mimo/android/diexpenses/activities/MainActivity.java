@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity
                 ivProfileImage.setImageBitmap(bitmap);
             }
         } catch (Exception e) {
-            Log.e(TAG, "Error while loading profile iamge", e);
+            Log.e(TAG, "Error while loading profile image", e);
         }
     }
 

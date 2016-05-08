@@ -130,8 +130,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/bank_account_balance"
-                    android:imeOptions="actionNext"
-                    android:inputType="numberDecimal"
+                    android:imeOptions="actionDone"
                     android:maxLines="1"
                     android:singleLine="true" />
 

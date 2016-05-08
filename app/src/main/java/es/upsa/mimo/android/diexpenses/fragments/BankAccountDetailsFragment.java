@@ -3,8 +3,11 @@ package es.upsa.mimo.android.diexpenses.fragments;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
+import android.text.InputFilter;
+import android.text.method.DigitsKeyListener;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -27,6 +30,7 @@ import es.upsa.mimo.android.diexpenses.models.BankAccount;
 import es.upsa.mimo.android.diexpenses.models.GenericResponse;
 import es.upsa.mimo.android.diexpenses.utils.Constants;
 import es.upsa.mimo.android.diexpenses.utils.Diexpenses;
+import es.upsa.mimo.android.diexpenses.utils.NumericFilter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -82,28 +86,41 @@ public class BankAccountDetailsFragment extends Fragment {
 
             ButterKnife.bind(this, getView());
 
-            fillForm(bankAccount);
+            configBalanceField();
+
+            if(bankAccount != null) {
+                fillForm(bankAccount);
+            }
+
+            configActionButton(bankAccount == null ? R.string.common_create : R.string.common_update);
         }
+    }
+
+    private void configBalanceField() {
+        String allowedCharacteres = "0123456789" + Diexpenses.getDecimalSeparator();
+        tilBalance.getEditText().setKeyListener(DigitsKeyListener.getInstance(allowedCharacteres));
+        InputFilter[] filter = new InputFilter[1];
+        filter[0] = new NumericFilter();
+        tilBalance.getEditText().setFilters(filter);
     }
 
     private void fillForm(BankAccount bankAccount) {
-        if(bankAccount == null) {
-            btnAction.setText(R.string.common_create);
-        } else {
-            tilDescription.getEditText().setText(bankAccount.getDescription());
-            tilIban.getEditText().setText(bankAccount.getIban());
-            tilEntity.getEditText().setText(bankAccount.getEntity());
-            tilOffice.getEditText().setText(bankAccount.getOffice());
-            tilControlDigit.getEditText().setText(bankAccount.getControlDigit());
-            tilAccountNumber.getEditText().setText(bankAccount.getAccountNumber());
-            tilBalance.getEditText().setText(Diexpenses.formatAmount(bankAccount.getBalance()));
-            btnAction.setText(R.string.common_update);
-        }
+        tilDescription.getEditText().setText(bankAccount.getDescription());
+        tilIban.getEditText().setText(bankAccount.getIban());
+        tilEntity.getEditText().setText(bankAccount.getEntity());
+        tilOffice.getEditText().setText(bankAccount.getOffice());
+        tilControlDigit.getEditText().setText(bankAccount.getControlDigit());
+        tilAccountNumber.getEditText().setText(bankAccount.getAccountNumber());
+        tilBalance.getEditText().setText(Diexpenses.formatAmount(bankAccount.getBalance()));
+    }
+
+    private void configActionButton(@StringRes int titleId) {
+        btnAction.setText(titleId);
     }
 
     @OnEditorAction(R.id.bank_account_balance_et)
-    public boolean onEditorAction(TextView arg0, int arg1, KeyEvent arg2) {
-        if(arg1 == EditorInfo.IME_ACTION_DONE) {
+    public boolean onEditorAction(TextView arg0, int keyCode, KeyEvent event) {
+        if(keyCode == EditorInfo.IME_ACTION_DONE) {
             onCreateOrEditBankAccount();
         }
         return false;
@@ -132,8 +149,10 @@ public class BankAccountDetailsFragment extends Fragment {
                 account.setId(bankAccount.getId());
                 editBankAccount(userId, account);
             }
-        } catch (Exception e) {
-            Log.e(TAG, "Error while creating or editing bank account:", e);
+        } catch (ParseException e) {
+            Log.e(TAG, "Invalid amount: " + tilBalance.getEditText().getText().toString());
+            setErrorInField(tilBalance, getString(R.string.common_invalid_amount));
+            resetCommonComponentes();
         }
     }
 

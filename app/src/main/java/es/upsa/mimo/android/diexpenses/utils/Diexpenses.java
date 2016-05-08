@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.DateFormatSymbols;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -202,4 +203,8 @@ public class Diexpenses {
         return number.doubleValue();
     }
 
+    public static char getDecimalSeparator() {
+        DecimalFormatSymbols symbols = decimalFormatWithLocale.getDecimalFormatSymbols();
+        return symbols.getDecimalSeparator();
+    }
 }

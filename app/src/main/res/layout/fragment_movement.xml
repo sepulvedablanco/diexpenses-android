@@ -53,7 +53,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/movement_amount"
                     android:imeOptions="actionNext"
-                    android:inputType="numberDecimal"
                     android:maxLines="1"
                     android:singleLine="true" />
 

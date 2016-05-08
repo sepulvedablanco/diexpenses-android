@@ -23,6 +23,7 @@
     <string name="common_field_required">Field required</string>
     <string name="common_numeric_field_required_with_lenght">This field must contain %1$s digits</string>
     <string name="common_unknown_error">An unknown error has occurred</string>
+    <string name="common_invalid_amount">Enter a valid amount.</string>
 
     <string name="sign_up">Sign Up</string>
     <string name="name">Name</string>
@@ -124,6 +125,7 @@
     <string name="movement_subkind_label">Subkind:</string>
     <string name="movement_bank_account_label">Bank account:</string>
     <string name="movement_transaction_date_label">Transaction date:</string>
+    <string name="movement_invalid_amount">You can not create movements with amount 0.</string>
     <string name="statistics_year_label">Year:</string>
     <string name="statistics_month_label">Month:</string>
     <string name="statistics_kind_label">Kind:</string>
