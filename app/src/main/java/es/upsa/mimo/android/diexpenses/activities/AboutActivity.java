@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.upsa.mimo.android.diexpenses.R;
 
@@ -14,7 +14,7 @@ import es.upsa.mimo.android.diexpenses.R;
  */
 public class AboutActivity extends AppCompatActivity {
 
-    @Bind(R.id.about_toolbar) Toolbar toolbar;
+    @BindView(R.id.about_toolbar) Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

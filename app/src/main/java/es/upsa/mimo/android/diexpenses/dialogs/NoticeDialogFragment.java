@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.upsa.mimo.android.diexpenses.R;
 
@@ -20,8 +20,8 @@ public class NoticeDialogFragment extends DialogFragment {
 
     private static final String TAG = NoticeDialogFragment.class.getSimpleName();
 
-    @Bind(R.id.dialog_edit) TextView tvEdit;
-    @Bind(R.id.dialog_delete) TextView tvDelete;
+    @BindView(R.id.dialog_edit) TextView tvEdit;
+    @BindView(R.id.dialog_delete) TextView tvDelete;
 
     public interface ActionDialogListener {
         void onEditClick(DialogFragment dialog);

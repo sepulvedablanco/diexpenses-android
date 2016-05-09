@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.upsa.mimo.android.diexpenses.R;
 import es.upsa.mimo.android.diexpenses.models.BankAccount;
@@ -65,9 +65,9 @@ public class BankAccountsAdapter extends RecyclerView.Adapter<BankAccountsAdapte
 
         private Context mContext;
 
-        @Bind(R.id.row_bank_account_icon) ImageView ivIcon;
-        @Bind(R.id.row_bank_account_description) TextView tvDescription;
-        @Bind(R.id.row_bank_account_accountNumber) TextView tvAccountNumber;
+        @BindView(R.id.row_bank_account_icon) ImageView ivIcon;
+        @BindView(R.id.row_bank_account_description) TextView tvDescription;
+        @BindView(R.id.row_bank_account_accountNumber) TextView tvAccountNumber;
 
         public BankAccountViewHolder(Context context, View itemView) {
             super(itemView);

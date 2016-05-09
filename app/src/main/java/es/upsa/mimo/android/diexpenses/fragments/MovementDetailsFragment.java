@@ -27,7 +27,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
@@ -63,15 +63,15 @@ public class MovementDetailsFragment extends Fragment implements DatePickerDialo
     private boolean subkindsLoaded = false;
     private boolean bankAccountsLoaded = false;
 
-    @Bind(R.id.movement_toggle_expense) ToggleButton etToggleExpense;
-    @Bind(R.id.movement_concept) TextInputLayout tilConcept;
-    @Bind(R.id.movement_amount) TextInputLayout tilAmount;
-    @Bind(R.id.movement_kind) Spinner spinnerKind;
-    @Bind(R.id.movement_subkind) Spinner spinnerSubkind;
-    @Bind(R.id.movement_bank_account) Spinner spinnerBankAccount;
-    @Bind(R.id.movement_transaction_date) TextView tvTransactionDate;
-    @Bind(R.id.movement_progress_bar) ProgressBar progressBar;
-    @Bind(R.id.movement_action) Button btnAction;
+    @BindView(R.id.movement_toggle_expense) ToggleButton etToggleExpense;
+    @BindView(R.id.movement_concept) TextInputLayout tilConcept;
+    @BindView(R.id.movement_amount) TextInputLayout tilAmount;
+    @BindView(R.id.movement_kind) Spinner spinnerKind;
+    @BindView(R.id.movement_subkind) Spinner spinnerSubkind;
+    @BindView(R.id.movement_bank_account) Spinner spinnerBankAccount;
+    @BindView(R.id.movement_transaction_date) TextView tvTransactionDate;
+    @BindView(R.id.movement_progress_bar) ProgressBar progressBar;
+    @BindView(R.id.movement_action) Button btnAction;
 
     public static MovementDetailsFragment newInstance(Long userId) {
         MovementDetailsFragment movementFragment = new MovementDetailsFragment();

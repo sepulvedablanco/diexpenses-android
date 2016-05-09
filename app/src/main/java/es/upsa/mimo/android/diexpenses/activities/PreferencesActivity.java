@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.upsa.mimo.android.diexpenses.R;
 import es.upsa.mimo.android.diexpenses.fragments.PreferencesFragment;
@@ -16,7 +16,7 @@ import es.upsa.mimo.android.diexpenses.fragments.PreferencesFragment;
  */
 public class PreferencesActivity extends AppCompatActivity {
 
-    @Bind(R.id.settings_toolbar) Toolbar toolbar;
+    @BindView(R.id.settings_toolbar) Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.upsa.mimo.android.diexpenses.R;
 
@@ -21,7 +21,7 @@ public class EditDialogFragment extends DialogFragment {
 
     private static final String TAG = EditDialogFragment.class.getSimpleName();
 
-    @Bind(R.id.dialog_edit_input) EditText etName;
+    @BindView(R.id.dialog_edit_input) EditText etName;
 
     public interface EditDialogListener {
         void onAdd(DialogFragment dialog, String text);

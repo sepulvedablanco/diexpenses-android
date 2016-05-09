@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.upsa.mimo.android.diexpenses.R;
 import es.upsa.mimo.android.diexpenses.models.Movement;
@@ -65,10 +65,10 @@ public class MovementsAdapter extends RecyclerView.Adapter<MovementsAdapter.Move
 
         private Context mContext;
 
-        @Bind(R.id.row_movement_icon) ImageView ivIcon;
-        @Bind(R.id.row_movement_concept_amount) TextView tvConcept;
-        @Bind(R.id.row_movement_kind_subkind) TextView tvKindSubkind;
-        @Bind(R.id.row_movement_bank_account) TextView tvAccountNumber;
+        @BindView(R.id.row_movement_icon) ImageView ivIcon;
+        @BindView(R.id.row_movement_concept_amount) TextView tvConcept;
+        @BindView(R.id.row_movement_kind_subkind) TextView tvKindSubkind;
+        @BindView(R.id.row_movement_bank_account) TextView tvAccountNumber;
 
         public MovementViewHolder(Context context, View itemView) {
             super(itemView);

@@ -23,14 +23,11 @@ import android.widget.TextView;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import java.text.DateFormatSymbols;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
@@ -63,14 +60,14 @@ public class MovementsFragment extends Fragment implements NoticeDialogFragment.
 
     private Long userId;
 
-    @Bind(R.id.generic_add_new_tv) TextView etNewMovement;
-    @Bind(R.id.generic_swipe_refresh_layout) SwipeRefreshLayout mSwipeRefreshLayout;
-    @Bind(R.id.generic_recycler_view) RecyclerView rvMovements;
-    @Bind(R.id.generic_progress_bar) ProgressBar mProgressBar;
-    @Bind(R.id.generic_month_selector_labels_layout) PercentRelativeLayout prlLabels;
-    @Bind(R.id.generic_month_selector_layout_spinners) PercentRelativeLayout prlSpinners;
-    @Bind(R.id.generic_year_spinner) Spinner spinnerYear;
-    @Bind(R.id.generic_month_spinner) Spinner spinnerMonth;
+    @BindView(R.id.generic_add_new_tv) TextView etNewMovement;
+    @BindView(R.id.generic_swipe_refresh_layout) SwipeRefreshLayout mSwipeRefreshLayout;
+    @BindView(R.id.generic_recycler_view) RecyclerView rvMovements;
+    @BindView(R.id.generic_progress_bar) ProgressBar mProgressBar;
+    @BindView(R.id.generic_month_selector_labels_layout) PercentRelativeLayout prlLabels;
+    @BindView(R.id.generic_month_selector_layout_spinners) PercentRelativeLayout prlSpinners;
+    @BindView(R.id.generic_year_spinner) Spinner spinnerYear;
+    @BindView(R.id.generic_month_spinner) Spinner spinnerMonth;
 
     private List<Movement> lstMovements;
     private Movement movementSelected;

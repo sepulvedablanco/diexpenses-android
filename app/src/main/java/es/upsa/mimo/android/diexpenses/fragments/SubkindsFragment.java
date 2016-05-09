@@ -18,7 +18,7 @@ import android.widget.TextView;
 import java.util.Collections;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import es.upsa.mimo.android.diexpenses.R;
@@ -49,10 +49,10 @@ public class SubkindsFragment extends Fragment implements ActionDialogListener, 
 
     private Long kindId;
 
-    @Bind(R.id.generic_add_new_tv) TextView etNewSubkind;
-    @Bind(R.id.generic_swipe_refresh_layout) SwipeRefreshLayout mSwipeRefreshLayout;
-    @Bind(R.id.generic_recycler_view) RecyclerView rvSubkinds;
-    @Bind(R.id.generic_progress_bar) ProgressBar mProgressBar;
+    @BindView(R.id.generic_add_new_tv) TextView etNewSubkind;
+    @BindView(R.id.generic_swipe_refresh_layout) SwipeRefreshLayout mSwipeRefreshLayout;
+    @BindView(R.id.generic_recycler_view) RecyclerView rvSubkinds;
+    @BindView(R.id.generic_progress_bar) ProgressBar mProgressBar;
 
     private List<Subkind> lstSubkinds;
     private Subkind subkindSelected;

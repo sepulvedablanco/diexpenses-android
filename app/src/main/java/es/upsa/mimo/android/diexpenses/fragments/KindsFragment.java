@@ -19,7 +19,7 @@ import android.widget.TextView;
 import java.util.Collections;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import es.upsa.mimo.android.diexpenses.comparators.KindBaseComparator;
@@ -50,10 +50,10 @@ public class KindsFragment extends Fragment implements ActionDialogListener, Yes
 
     private Long userId;
 
-    @Bind(R.id.generic_add_new_tv) TextView etNewKind;
-    @Bind(R.id.generic_swipe_refresh_layout) SwipeRefreshLayout mSwipeRefreshLayout;
-    @Bind(R.id.generic_recycler_view) RecyclerView rvKinds;
-    @Bind(R.id.generic_progress_bar) ProgressBar mProgressBar;
+    @BindView(R.id.generic_add_new_tv) TextView etNewKind;
+    @BindView(R.id.generic_swipe_refresh_layout) SwipeRefreshLayout mSwipeRefreshLayout;
+    @BindView(R.id.generic_recycler_view) RecyclerView rvKinds;
+    @BindView(R.id.generic_progress_bar) ProgressBar mProgressBar;
 
     private List<Kind> lstKinds;
     private Kind kindSelected;

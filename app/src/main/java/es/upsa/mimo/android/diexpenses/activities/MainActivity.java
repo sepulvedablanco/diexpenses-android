@@ -29,7 +29,7 @@ import org.greenrobot.eventbus.Subscribe;
 
 import java.io.File;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.upsa.mimo.android.diexpenses.R;
 import es.upsa.mimo.android.diexpenses.events.ProfileImageChanged;
@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity
 
     private User user;
 
-    @Bind(R.id.main_drawer_layout) DrawerLayout mDrawerLayout;
-    @Bind(R.id.main_nav_view) NavigationView navView;
+    @BindView(R.id.main_drawer_layout) DrawerLayout mDrawerLayout;
+    @BindView(R.id.main_nav_view) NavigationView navView;
     private ImageView ivProfileImage;
 
     @Override

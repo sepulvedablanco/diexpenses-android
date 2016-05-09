@@ -20,7 +20,7 @@ import android.widget.TextView;
 
 import java.text.ParseException;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnEditorAction;
@@ -45,15 +45,15 @@ public class BankAccountDetailsFragment extends Fragment {
     private Long userId;
     private BankAccount bankAccount;
 
-    @Bind(R.id.bank_account_description) TextInputLayout tilDescription;
-    @Bind(R.id.bank_account_iban) TextInputLayout tilIban;
-    @Bind(R.id.bank_account_entity) TextInputLayout tilEntity;
-    @Bind(R.id.bank_account_office) TextInputLayout tilOffice;
-    @Bind(R.id.bank_account_control_digit) TextInputLayout tilControlDigit;
-    @Bind(R.id.bank_account_number) TextInputLayout tilAccountNumber;
-    @Bind(R.id.bank_account_balance) TextInputLayout tilBalance;
-    @Bind(R.id.bank_account_action) Button btnAction;
-    @Bind(R.id.bank_account_progress_bar) ProgressBar progressBar;
+    @BindView(R.id.bank_account_description) TextInputLayout tilDescription;
+    @BindView(R.id.bank_account_iban) TextInputLayout tilIban;
+    @BindView(R.id.bank_account_entity) TextInputLayout tilEntity;
+    @BindView(R.id.bank_account_office) TextInputLayout tilOffice;
+    @BindView(R.id.bank_account_control_digit) TextInputLayout tilControlDigit;
+    @BindView(R.id.bank_account_number) TextInputLayout tilAccountNumber;
+    @BindView(R.id.bank_account_balance) TextInputLayout tilBalance;
+    @BindView(R.id.bank_account_action) Button btnAction;
+    @BindView(R.id.bank_account_progress_bar) ProgressBar progressBar;
 
     public static BankAccountDetailsFragment newInstance(Long userId) {
         return  newInstance(userId, null);

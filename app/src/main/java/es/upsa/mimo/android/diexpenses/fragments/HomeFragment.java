@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import es.upsa.mimo.android.diexpenses.R;
@@ -52,13 +52,13 @@ public class HomeFragment extends Fragment {
 
     private int numRequestFinished = 0;
 
-    @Bind(R.id.home_greetings) TextView tvGreetings;
-    @Bind(R.id.home_total_amount) TextView tvTotalAmount;
-    @Bind(R.id.home_month_expenses) TextView tvMonthExpenses;
-    @Bind(R.id.home_month_incomes) TextView tvMonthIncomes;
-    @Bind(R.id.home_chart) PieChart chart;
-    @Bind(R.id.home_balance) TextView tvBalance;
-    @Bind(R.id.home_progress_bar) ProgressBar progressBar;
+    @BindView(R.id.home_greetings) TextView tvGreetings;
+    @BindView(R.id.home_total_amount) TextView tvTotalAmount;
+    @BindView(R.id.home_month_expenses) TextView tvMonthExpenses;
+    @BindView(R.id.home_month_incomes) TextView tvMonthIncomes;
+    @BindView(R.id.home_chart) PieChart chart;
+    @BindView(R.id.home_balance) TextView tvBalance;
+    @BindView(R.id.home_progress_bar) ProgressBar progressBar;
 
     private User user;
     private Double expenses;

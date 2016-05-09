@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnEditorAction;
@@ -30,11 +30,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = LoginActivity.class.getSimpleName();
 
-    @Bind(R.id.signup_user) TextInputLayout tilUser;
-    @Bind(R.id.signup_password) TextInputLayout tilPassword;
-    @Bind(R.id.login_signIn) Button btnLogin;
-    @Bind(R.id.login_signup) TextView tvSignup;
-    @Bind(R.id.login_progress_bar) ProgressBar progressBar;
+    @BindView(R.id.signup_user) TextInputLayout tilUser;
+    @BindView(R.id.signup_password) TextInputLayout tilPassword;
+    @BindView(R.id.login_signIn) Button btnLogin;
+    @BindView(R.id.login_signup) TextView tvSignup;
+    @BindView(R.id.login_progress_bar) ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

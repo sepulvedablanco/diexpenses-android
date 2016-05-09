@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.upsa.mimo.android.diexpenses.models.KindBase;
 
@@ -57,7 +57,7 @@ public class KindsBaseAdapter extends RecyclerView.Adapter<KindsBaseAdapter.Kind
 
     public static class KindsBaseViewHolder extends RecyclerView.ViewHolder {
 
-        @Bind(android.R.id.text1) TextView tvKindBase;
+        @BindView(android.R.id.text1) TextView tvKindBase;
 
         public KindsBaseViewHolder(View itemView) {
             super(itemView);

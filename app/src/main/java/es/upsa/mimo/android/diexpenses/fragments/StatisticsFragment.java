@@ -25,7 +25,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
@@ -61,15 +61,15 @@ public class StatisticsFragment extends Fragment {
     private Double incomes = 0D;
     private Double expenses = 0D;
 
-    @Bind(R.id.statistics_year_spinner) Spinner spinnerYear;
-    @Bind(R.id.statistics_month_spinner) Spinner spinnerMonth;
-    @Bind(R.id.statistics_kind_spinner) Spinner spinnerKind;
-    @Bind(R.id.statistics_subkind_spinner) Spinner spinnerSubkind;
-    @Bind(R.id.statistics_bank_account_spinner) Spinner spinnerBankAccount;
-    @Bind(R.id.statistics_action) Button btnAction;
-    @Bind(R.id.statistics_chart) PieChart pieChart;
-    @Bind(R.id.statistics_progress_bar) ProgressBar progressBar;
-    @Bind(R.id.statistics_progress_bar_message) TextView progressBarMessage;
+    @BindView(R.id.statistics_year_spinner) Spinner spinnerYear;
+    @BindView(R.id.statistics_month_spinner) Spinner spinnerMonth;
+    @BindView(R.id.statistics_kind_spinner) Spinner spinnerKind;
+    @BindView(R.id.statistics_subkind_spinner) Spinner spinnerSubkind;
+    @BindView(R.id.statistics_bank_account_spinner) Spinner spinnerBankAccount;
+    @BindView(R.id.statistics_action) Button btnAction;
+    @BindView(R.id.statistics_chart) PieChart pieChart;
+    @BindView(R.id.statistics_progress_bar) ProgressBar progressBar;
+    @BindView(R.id.statistics_progress_bar_message) TextView progressBarMessage;
 
     public static StatisticsFragment newInstance(Long userId) {
         StatisticsFragment statisticsFragment = new StatisticsFragment();
