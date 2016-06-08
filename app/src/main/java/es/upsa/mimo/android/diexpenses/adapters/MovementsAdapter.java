@@ -85,7 +85,8 @@ public class MovementsAdapter extends RecyclerView.Adapter<MovementsAdapter.Move
 
             ivIcon.setImageResource(getImageResource(movement.getExpense()));
             tvConcept.setText(movement.getConcept() + " (" + Diexpenses.formatAmount(movement.getAmount()) + Diexpenses.getCurrency(mContext) + ")");
-            tvKindSubkind.setText(movement.getKind().getDescription() + " - " + movement.getSubkind().getDescription()
+            String subkindDescription = movement.getSubkind() != null ? " - " + movement.getSubkind().getDescription() : "";
+            tvKindSubkind.setText(movement.getKind().getDescription() + subkindDescription
                     + " (" + Diexpenses.formatDate(movement.getTransactionDate()) + ")");
             tvAccountNumber.setText(movement.getBankAccount().getCompleteBankAccount());
 
