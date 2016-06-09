@@ -18,13 +18,13 @@ android {
     }
     productFlavors {
         pro {
-            versionCode 3
-            versionName "1.1"
+            versionCode 4
+            versionName "1.2"
         }
         free {
             applicationIdSuffix = "free"
-            versionCode 4
-            versionName "1.3-free"
+            versionCode 5
+            versionName "1.4-free"
         }
     }
 
